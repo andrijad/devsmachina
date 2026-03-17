@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — DevsMachina</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://devsmachina.app/privacy">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0f0f0e;
+      --ink-2: #3a3a38;
+      --ink-3: #7a7a76;
+      --paper: #f8f6f1;
+      --paper-2: #eeeae0;
+      --accent: #c84b2f;
+      --line: rgba(15,15,14,0.1);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(248,246,241,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-back {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--ink); }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 8rem 2.5rem 6rem;
+    }
+
+    .page-tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .updated {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-3);
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      line-height: 1.2;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+
+    p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ink-2);
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    ul li {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ink-2);
+      padding: 0.3rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '→';
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 0.45rem;
+    }
+
+    a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    a:hover { color: var(--accent); }
+
+    .highlight {
+      background: var(--paper-2);
+      border-left: 2px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .highlight p {
+      margin: 0;
+      font-size: 0.88rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 4rem;
+    }
+    .footer-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 1.75rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-3); }
+    .footer-logo span { color: var(--accent); }
+    .footer-copy { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3); }
+
+    @media (max-width: 600px) {
+      .page { padding: 7rem 1.25rem 4rem; }
+      .nav-inner { padding: 1rem 1.25rem; }
+      .footer-inner { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">devs<span>machina</span>.app</a>
+      <a href="/" class="nav-back">← Back</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="page-tag">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: March 2026</p>
+
+    <p>This Privacy Policy explains how DevsMachina ("we", "us", "our") collects, uses, and protects personal data submitted through <a href="https://devsmachina.app">devsmachina.app</a>. We are committed to protecting your privacy and handling your data transparently.</p>
+
+    <div class="highlight">
+      <p>DevsMachina is operated from Serbia. By submitting your information through this website, you acknowledge that your data may be processed in accordance with this policy.</p>
+    </div>
+
+    <h2>1. What data we collect</h2>
+    <p>When you submit the early access or waitlist form, we collect:</p>
+    <ul>
+      <li>Your name</li>
+      <li>Your email address</li>
+      <li>Your store URL (optional)</li>
+      <li>Your IP address (collected automatically by Cloudflare Turnstile for spam prevention)</li>
+    </ul>
+
+    <h2>2. Why we collect it</h2>
+    <p>We collect this data solely to:</p>
+    <ul>
+      <li>Add you to the early access waitlist</li>
+      <li>Contact you about DevsMachina product updates and launch</li>
+      <li>Prevent spam and abuse through Cloudflare Turnstile</li>
+    </ul>
+    <p>We do not use your data for advertising, profiling, or any purpose beyond the above.</p>
+
+    <h2>3. How we store and process your data</h2>
+    <p>Form submissions are processed and stored by <strong>Formspree</strong> (formspree.io), a third-party form service. Formspree stores your submission data on their servers. You can review Formspree's privacy policy at <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>.</p>
+    <p>Spam prevention is handled by <strong>Cloudflare Turnstile</strong>. Cloudflare may process your IP address and browser signals to determine whether a form submission is human. You can review Cloudflare's privacy policy at <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a>.</p>
+    <p>This website is hosted on <strong>Cloudflare Pages</strong> and fonts are loaded from <strong>Google Fonts</strong>. Google may log your IP address when fonts are requested. You can review Google's privacy policy at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+
+    <h2>4. How long we keep your data</h2>
+    <p>We retain your data for as long as necessary to manage the waitlist and notify you about the product launch. You may request deletion at any time by contacting us.</p>
+
+    <h2>5. Your rights</h2>
+    <p>You have the right to:</p>
+    <ul>
+      <li>Access the personal data we hold about you</li>
+      <li>Request correction of inaccurate data</li>
+      <li>Request deletion of your data</li>
+      <li>Withdraw consent at any time</li>
+    </ul>
+    <p>To exercise any of these rights, contact us at <a href="mailto:privacy@devsmachina.app">privacy@devsmachina.app</a>.</p>
+
+    <h2>6. Cookies</h2>
+    <p>This website does not use tracking or analytics cookies. Cloudflare Turnstile may set a functional cookie necessary for spam prevention. Google Fonts may set a cookie when fonts are loaded. These are technical necessities and do not track your browsing behavior across other sites.</p>
+
+    <h2>7. Changes to this policy</h2>
+    <p>We may update this policy as the product evolves. Any significant changes will be reflected with an updated date at the top of this page.</p>
+
+    <h2>8. Contact</h2>
+    <p>For any privacy-related questions, contact us at <a href="mailto:privacy@devsmachina.app">privacy@devsmachina.app</a>.</p>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">devs<span>machina</span>.app</div>
+      <div class="footer-copy">© 2026 DevsMachina. All rights reserved.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
