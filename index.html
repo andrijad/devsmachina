@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,13 +48,18 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2.5rem;
       background: rgba(248,246,241,0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .nav-logo {
@@ -86,18 +92,25 @@
     }
 
     /* HERO */
+    .hero-wrapper {
+      border-top: none;
+      border-bottom: 1px solid var(--line);
+    }
+
     .hero {
-      min-height: 100vh;
+      min-height: min(100vh, 860px);
+      max-width: 1100px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      padding-top: 5rem;
+      padding-top: 4rem;
     }
 
     .hero-left {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 6rem 3rem 6rem 2.5rem;
+      padding: 4rem 3rem 4rem 2.5rem;
       border-right: 1px solid var(--line);
     }
 
@@ -197,7 +210,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 6rem 2.5rem;
+      padding: 4rem 2.5rem;
       background: var(--paper-2);
       position: relative;
       overflow: hidden;
@@ -565,6 +578,11 @@
     /* FOOTER */
     footer {
       border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
       padding: 1.75rem 2.5rem;
       display: flex;
       align-items: center;
@@ -634,12 +652,12 @@
     }
 
     @media (max-width: 600px) {
-      nav { padding: 1rem 1.25rem; }
+      .nav-inner { padding: 1rem 1.25rem; }
       .hero-left { padding: 5rem 1.25rem 3rem; }
       .section-inner { padding: 3.5rem 1.25rem; }
       .steps { grid-template-columns: 1fr; }
       .agents-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .footer-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
 </head>
@@ -647,12 +665,15 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">devs<span>machina</span>.app</a>
-    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">devs<span>machina</span>.app</a>
+      <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    </div>
   </nav>
 
   <!-- HERO -->
-  <section class="hero" style="border-top: none;">
+  <div class="hero-wrapper">
+  <section class="hero">
     <div class="hero-left">
       <div class="hero-eyebrow">Private Beta — Limited Access</div>
       <h1 class="hero-title">
@@ -664,6 +685,7 @@
       <form class="hero-form" id="hero-form" action="https://formspree.io/f/xjgapjby" method="POST">
         <input type="email" name="email" placeholder="your@email.com" required>
         <input type="hidden" name="_source" value="hero">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAACsW-ibG9m4hyKvk" data-size="invisible"></div>
         <button type="submit">Request Access</button>
       </form>
       <p class="hero-note">No credit card. No spam. Early access only.</p>
@@ -709,6 +731,7 @@
       </div>
     </div>
   </section>
+  </div>
 
   <!-- HOW IT WORKS -->
   <section id="how">
@@ -819,8 +842,10 @@
         <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xjgapjby" method="POST">
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="email" placeholder="Work email" required>
-          <input type="url" name="store_url" placeholder="Store URL (optional)">
+          <input type="text" name="store_url" placeholder="Store URL (optional)">
+
           <input type="hidden" name="_source" value="waitlist">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAACsW-ibG9m4hyKvk" data-size="invisible"></div>
           <button type="submit">Request Early Access</button>
         </form>
         <div class="waitlist-perks">
@@ -835,8 +860,10 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">devs<span>machina</span>.app</div>
-    <div class="footer-copy">© 2026 DevsMachina. All rights reserved.</div>
+    <div class="footer-inner">
+      <div class="footer-logo">devs<span>machina</span>.app</div>
+      <div class="footer-copy">© 2026 DevsMachina. All rights reserved.</div>
+    </div>
   </footer>
 
   <script>
