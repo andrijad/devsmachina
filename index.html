@@ -661,8 +661,9 @@
       <p class="hero-sub">
         DevsMachina deploys autonomous AI agents across your ecommerce operations — analyzing pricing, SEO, conversion, and inventory — then delivers precise actions, not reports.
       </p>
-      <form class="hero-form" id="hero-form">
-        <input type="email" placeholder="your@email.com" required>
+      <form class="hero-form" id="hero-form" action="https://formspree.io/f/xjgapjby" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <input type="hidden" name="_source" value="hero">
         <button type="submit">Request Access</button>
       </form>
       <p class="hero-note">No credit card. No spam. Early access only.</p>
@@ -815,10 +816,11 @@
         <p class="waitlist-sub">We're onboarding a limited number of WooCommerce and DTC stores in the first cohort. Early access includes direct input into the roadmap and founder pricing.</p>
       </div>
       <div>
-        <form class="waitlist-form" id="waitlist-form">
-          <input type="text" placeholder="Your name" required>
-          <input type="email" placeholder="Work email" required>
-          <input type="url" placeholder="Store URL (optional)">
+        <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xjgapjby" method="POST">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Work email" required>
+          <input type="url" name="store_url" placeholder="Store URL (optional)">
+          <input type="hidden" name="_source" value="waitlist">
           <button type="submit">Request Early Access</button>
         </form>
         <div class="waitlist-perks">
@@ -850,15 +852,33 @@
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
 
-    // Form handling
+    // Form handling via Formspree AJAX
     function handleForm(formId, successId) {
       const form = document.getElementById(formId);
       const success = document.getElementById(successId);
       if (!form) return;
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        form.style.display = 'none';
-        success.style.display = 'block';
+        const btn = form.querySelector('button');
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            form.style.display = 'none';
+            success.style.display = 'block';
+          } else {
+            btn.textContent = 'Try again';
+            btn.disabled = false;
+          }
+        } catch {
+          btn.textContent = 'Try again';
+          btn.disabled = false;
+        }
       });
     }
 
