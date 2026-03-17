@@ -1,4 +1,4 @@
-# DevsMachina — Landing Page v1.0
+# DevsMachina — Landing Page v1.1
 
 Static landing page for [devsmachina.app](https://devsmachina.app).
 
