@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevsMachina — AI Agents for Ecommerce Operations</title>
+  <meta name="description" content="DevsMachina deploys autonomous AI agents that analyze your store data, extract actionable insights, and deliver them where they matter. Built for WooCommerce and DTC brands.">
+  <meta property="og:title" content="DevsMachina — AI Agents for Ecommerce Operations">
+  <meta property="og:description" content="Autonomous AI agents that turn raw store data into decisive action.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://devsmachina.app">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0f0e;
+      --ink-2: #3a3a38;
+      --ink-3: #7a7a76;
+      --paper: #f8f6f1;
+      --paper-2: #eeeae0;
+      --accent: #c84b2f;
+      --accent-2: #e8956d;
+      --line: rgba(15,15,14,0.1);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: rgba(248,246,241,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--ink);
+      padding: 0.45rem 1.1rem;
+      transition: all 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 3rem 6rem 2.5rem;
+      border-right: 1px solid var(--line);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.25s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.7;
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.4s forwards;
+    }
+
+    .hero-form {
+      display: flex;
+      gap: 0;
+      max-width: 420px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.55s forwards;
+    }
+
+    .hero-form input {
+      flex: 1;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      padding: 0.85rem 1.1rem;
+      border: 1px solid var(--ink);
+      border-right: none;
+      background: transparent;
+      color: var(--ink);
+      outline: none;
+      transition: background 0.2s;
+    }
+
+    .hero-form input::placeholder { color: var(--ink-3); }
+    .hero-form input:focus { background: var(--paper-2); }
+
+    .hero-form button {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.4rem;
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .hero-form button:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .hero-note {
+      margin-top: 0.85rem;
+      font-size: 0.75rem;
+      color: var(--ink-3);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.65s forwards;
+    }
+
+    /* HERO RIGHT — animated agent diagram */
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2.5rem;
+      background: var(--paper-2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .diagram {
+      width: 100%;
+      max-width: 360px;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.7s forwards;
+    }
+
+    .diagram-node {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: border-color 0.3s;
+    }
+
+    .diagram-node:hover { border-color: var(--accent); }
+
+    .node-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .node-dot.slow { animation-delay: 0.4s; }
+    .node-dot.slower { animation-delay: 0.8s; }
+    .node-dot.inactive { background: var(--paper-2); border: 1px solid var(--ink-3); animation: none; }
+
+    .node-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-2);
+    }
+
+    .node-status {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .node-status.idle { color: var(--ink-3); }
+
+    .diagram-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .diagram-arrow-line {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+      position: relative;
+    }
+
+    .diagram-arrow-line::after {
+      content: '';
+      position: absolute;
+      right: -1px; top: -3px;
+      width: 6px; height: 6px;
+      border-right: 1px solid var(--ink-3);
+      border-bottom: 1px solid var(--ink-3);
+      transform: rotate(-45deg);
+    }
+
+    .diagram-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--ink-3);
+      padding: 0 0.5rem;
+      white-space: nowrap;
+    }
+
+    /* SECTION COMMON */
+    section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+    }
+
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--ink-2);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* HOW IT WORKS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 3.5rem;
+      border: 1px solid var(--line);
+    }
+
+    .step {
+      padding: 2rem 1.75rem;
+      border-right: 1px solid var(--line);
+      position: relative;
+    }
+
+    .step:last-child { border-right: none; }
+
+    .step-num {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--ink-3);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.65;
+    }
+
+    /* AGENTS */
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      margin-top: 3.5rem;
+      border: 1px solid var(--line);
+    }
+
+    .agent-card {
+      background: var(--paper);
+      padding: 2rem 1.75rem;
+      transition: background 0.2s;
+    }
+
+    .agent-card:hover { background: var(--paper-2); }
+
+    .agent-icon {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .agent-icon::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .agent-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .agent-desc {
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.65;
+    }
+
+    /* WHO IT'S FOR */
+    .audience {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3.5rem;
+      align-items: start;
+    }
+
+    .audience-list {
+      list-style: none;
+    }
+
+    .audience-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.55;
+    }
+
+    .audience-list li::before {
+      content: '→';
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+
+    .audience-quote {
+      background: var(--paper-2);
+      border-left: 2px solid var(--accent);
+      padding: 2rem 2rem;
+    }
+
+    .audience-quote p {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .audience-quote cite {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-3);
+      letter-spacing: 0.06em;
+      font-style: normal;
+    }
+
+    /* WAITLIST SECTION */
+    .waitlist-section {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .waitlist-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .waitlist-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--paper);
+      margin-bottom: 1rem;
+    }
+
+    .waitlist-title em {
+      font-style: italic;
+      color: var(--accent-2);
+    }
+
+    .waitlist-sub {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(248,246,241,0.6);
+      line-height: 1.7;
+    }
+
+    .waitlist-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .waitlist-form input {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      padding: 0.9rem 1.1rem;
+      background: rgba(248,246,241,0.08);
+      border: 1px solid rgba(248,246,241,0.2);
+      color: var(--paper);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .waitlist-form input::placeholder { color: rgba(248,246,241,0.35); }
+    .waitlist-form input:focus { border-color: rgba(248,246,241,0.5); }
+
+    .waitlist-form button {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.4rem;
+      background: var(--accent);
+      color: var(--paper);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .waitlist-form button:hover { background: #b03d24; }
+
+    .waitlist-perks {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .waitlist-perk {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: rgba(248,246,241,0.45);
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .waitlist-perk::before {
+      content: '✓';
+      color: var(--accent-2);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.75rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--ink-3);
+    }
+
+    .footer-logo span { color: var(--accent); }
+
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-3);
+    }
+
+    /* SUCCESS STATE */
+    .success-msg {
+      display: none;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      padding: 0.75rem 0;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.75); }
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .step { border-bottom: 1px solid var(--line); }
+      .agents-grid { grid-template-columns: 1fr 1fr; }
+      .audience { grid-template-columns: 1fr; }
+      .waitlist-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .hero-left { padding: 5rem 1.25rem 3rem; }
+      .section-inner { padding: 3.5rem 1.25rem; }
+      .steps { grid-template-columns: 1fr; }
+      .agents-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">devs<span>machina</span>.app</a>
+    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" style="border-top: none;">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Private Beta — Limited Access</div>
+      <h1 class="hero-title">
+        The machine<br>that <em>acts</em><br>on your data.
+      </h1>
+      <p class="hero-sub">
+        DevsMachina deploys autonomous AI agents across your ecommerce operations — analyzing pricing, SEO, conversion, and inventory — then delivers precise actions, not reports.
+      </p>
+      <form class="hero-form" id="hero-form">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">Request Access</button>
+      </form>
+      <p class="hero-note">No credit card. No spam. Early access only.</p>
+      <div class="success-msg" id="hero-success">✓ You're on the list. We'll be in touch.</div>
+    </div>
+    <div class="hero-right">
+      <div class="diagram">
+        <div class="diagram-node">
+          <div class="node-dot"></div>
+          <span class="node-label">pricing_agent</span>
+          <span class="node-status">running</span>
+        </div>
+        <div class="diagram-arrow">
+          <div class="diagram-arrow-line"></div>
+          <span class="diagram-label">insight extracted</span>
+          <div class="diagram-arrow-line"></div>
+        </div>
+        <div class="diagram-node">
+          <div class="node-dot slow"></div>
+          <span class="node-label">seo_agent</span>
+          <span class="node-status">running</span>
+        </div>
+        <div class="diagram-arrow">
+          <div class="diagram-arrow-line"></div>
+          <span class="diagram-label">insight extracted</span>
+          <div class="diagram-arrow-line"></div>
+        </div>
+        <div class="diagram-node">
+          <div class="node-dot slower"></div>
+          <span class="node-label">cro_agent</span>
+          <span class="node-status">running</span>
+        </div>
+        <div class="diagram-arrow">
+          <div class="diagram-arrow-line"></div>
+          <span class="diagram-label">dispatching actions</span>
+          <div class="diagram-arrow-line"></div>
+        </div>
+        <div class="diagram-node">
+          <div class="node-dot inactive"></div>
+          <span class="node-label">inventory_agent</span>
+          <span class="node-status idle">scheduled</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-tag">How it works</div>
+        <h2 class="section-title">Data in. Action out.<br>No manual work in between.</h2>
+        <p class="section-sub">Agents run continuously across your store's data sources and push decisions — not dashboards — to where your team operates.</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step">
+          <div class="step-num">01 — INGEST</div>
+          <div class="step-title">Connect your sources</div>
+          <p class="step-desc">WooCommerce, GA4, competitor feeds, ad platforms. DevsMachina ingests from all relevant data sources automatically.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02 — ANALYZE</div>
+          <div class="step-title">Agents go to work</div>
+          <p class="step-desc">Specialized agents run continuously — each focused on one operational domain. Pricing, SEO, CRO, inventory, localization.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03 — EXTRACT</div>
+          <div class="step-title">Insights become actions</div>
+          <p class="step-desc">No reports. No charts to interpret. Each agent produces a specific, actionable recommendation with supporting evidence.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04 — DISPATCH</div>
+          <div class="step-title">Delivered where it matters</div>
+          <p class="step-desc">Actions go to Slack, email, or directly into your systems. The right person gets the right signal at the right time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENTS -->
+  <section id="agents">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-tag">The Agents</div>
+        <h2 class="section-title">Six specialists.<br>One platform.</h2>
+        <p class="section-sub">Each agent is purpose-built for a specific operational domain. They run independently and report to a central orchestrator.</p>
+      </div>
+      <div class="agents-grid reveal">
+        <div class="agent-card">
+          <div class="agent-icon">PRICING</div>
+          <div class="agent-name">Pricing Intelligence</div>
+          <p class="agent-desc">Tracks competitor prices across markets, detects margin opportunities, and flags pricing anomalies before they cost you revenue.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">SEO</div>
+          <div class="agent-name">SEO Monitor</div>
+          <p class="agent-desc">Monitors keyword rankings, detects traffic shifts, and surfaces content gaps with specific remediation steps.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">CRO</div>
+          <div class="agent-name">Conversion Audit</div>
+          <p class="agent-desc">Analyzes funnel behavior, identifies friction points, and proposes targeted experiments based on real session data.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">REPORTING</div>
+          <div class="agent-name">Operations Report</div>
+          <p class="agent-desc">Synthesizes GA4, ad spend, and revenue data into a weekly digest with variance analysis and trend alerts.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">INVENTORY</div>
+          <div class="agent-name">Inventory Signals</div>
+          <p class="agent-desc">Detects low stock risks, seasonal demand shifts, and supplier lead time mismatches before they become stockouts.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">LOCALIZATION</div>
+          <div class="agent-name">Localization Coverage</div>
+          <p class="agent-desc">Audits multilingual store coverage, flags untranslated content, and tracks localization gaps across target markets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-tag">Who it's for</div>
+        <h2 class="section-title">Built for operators,<br>not analysts.</h2>
+      </div>
+      <div class="audience reveal">
+        <ul class="audience-list">
+          <li>Mid-market DTC brands running WooCommerce who need operational intelligence without hiring a data team</li>
+          <li>Ecommerce PMs managing multiple channels who are drowning in dashboards but starved for decisions</li>
+          <li>Store owners scaling internationally who need localization and pricing intelligence across markets</li>
+          <li>Growth teams running lean who want the output of a full ops team at a fraction of the cost</li>
+        </ul>
+        <div class="audience-quote">
+          <p>"We don't need more data. We need someone — or something — to tell us exactly what to do next."</p>
+          <cite>— The ops problem DevsMachina solves</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="waitlist-section" id="waitlist">
+    <div class="waitlist-inner">
+      <div>
+        <h2 class="waitlist-title">Get early access<br>before we <em>open the gates.</em></h2>
+        <p class="waitlist-sub">We're onboarding a limited number of WooCommerce and DTC stores in the first cohort. Early access includes direct input into the roadmap and founder pricing.</p>
+      </div>
+      <div>
+        <form class="waitlist-form" id="waitlist-form">
+          <input type="text" placeholder="Your name" required>
+          <input type="email" placeholder="Work email" required>
+          <input type="url" placeholder="Store URL (optional)">
+          <button type="submit">Request Early Access</button>
+        </form>
+        <div class="waitlist-perks">
+          <div class="waitlist-perk">Founder pricing — locked for early cohort</div>
+          <div class="waitlist-perk">Direct access to the founding team</div>
+          <div class="waitlist-perk">Input on agent roadmap and priorities</div>
+        </div>
+        <div class="success-msg" id="waitlist-success" style="color: var(--accent-2);">✓ You're on the list. We'll reach out within 48 hours.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">devs<span>machina</span>.app</div>
+    <div class="footer-copy">© 2026 DevsMachina. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form handling
+    function handleForm(formId, successId) {
+      const form = document.getElementById(formId);
+      const success = document.getElementById(successId);
+      if (!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        form.style.display = 'none';
+        success.style.display = 'block';
+      });
+    }
+
+    handleForm('hero-form', 'hero-success');
+    handleForm('waitlist-form', 'waitlist-success');
+  </script>
+
+</body>
+</html>
