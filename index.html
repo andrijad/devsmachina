@@ -695,11 +695,15 @@
 
     /* SCROLL REVEAL */
     .reveal {
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 1;
+      transform: translateY(0);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .reveal.visible {
+    .js-loaded .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .js-loaded .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -749,7 +753,7 @@
       <form class="hero-form" id="hero-form" action="https://formspree.io/f/xjgapjby" method="POST">
         <input type="email" name="email" placeholder="your@email.com" required>
         <input type="hidden" name="_source" value="hero">
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAACsW-ibG9m4hyKvk" data-size="invisible"></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAACsW-ibG9m4hyKvk" data-size="flexible"></div>
         <button type="submit">Request Access</button>
       </form>
       <p class="hero-note">No credit card. No spam. Early access only.</p>
@@ -909,7 +913,7 @@
           <input type="text" name="store_url" placeholder="Store URL (optional)">
 
           <input type="hidden" name="_source" value="waitlist">
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAACsW-ibG9m4hyKvk" data-size="invisible"></div>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAACsW-ibG9m4hyKvk" data-size="flexible"></div>
           <button type="submit">Request Early Access</button>
         </form>
         <div class="waitlist-perks">
@@ -961,6 +965,9 @@
       localStorage.setItem('cookie_consent', 'declined');
       document.getElementById('cookie-banner').classList.remove('visible');
     }
+
+    // Mark JS as loaded so reveal animations work
+    document.body.classList.add('js-loaded');
 
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
