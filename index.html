@@ -608,7 +608,66 @@
       color: var(--ink-3);
     }
 
-    /* SUCCESS STATE */
+    /* COOKIE BANNER */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 200;
+      background: var(--ink);
+      border-top: 1px solid rgba(248,246,241,0.1);
+      display: none;
+    }
+    .cookie-banner.visible { display: block; }
+    .cookie-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .cookie-text {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(248,246,241,0.7);
+      line-height: 1.5;
+    }
+    .cookie-text a {
+      color: rgba(248,246,241,0.9);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .cookie-actions { display: flex; gap: 0.75rem; flex-shrink: 0; }
+    .cookie-accept {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.1rem;
+      background: var(--paper);
+      color: var(--ink);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cookie-accept:hover { background: var(--accent); color: var(--paper); }
+    .cookie-decline {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: rgba(248,246,241,0.45);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      padding: 0.5rem 0;
+    }
+    @media (max-width: 600px) {
+      .cookie-inner { flex-direction: column; gap: 1rem; padding: 1rem 1.25rem; }
+    }
     .success-msg {
       display: none;
       font-family: var(--mono);
@@ -867,11 +926,42 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-logo">devs<span>machina</span>.app</div>
-      <div class="footer-copy">© 2026 DevsMachina. All rights reserved.</div>
+      <div style="display:flex;gap:1.5rem;align-items:center;">
+        <a href="/privacy" style="font-family:var(--mono);font-size:0.7rem;color:var(--ink-3);text-decoration:none;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--ink-3)'">Privacy Policy</a>
+        <div class="footer-copy">© 2026 DevsMachina. All rights reserved.</div>
+      </div>
     </div>
   </footer>
 
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookie-banner">
+    <div class="cookie-inner">
+      <p class="cookie-text">
+        This site uses functional cookies for spam prevention (Cloudflare Turnstile) and loads fonts from Google Fonts. No tracking or analytics cookies are used. <a href="/privacy">Privacy Policy</a>
+      </p>
+      <div class="cookie-actions">
+        <button class="cookie-accept" onclick="acceptCookies()">Got it</button>
+        <button class="cookie-decline" onclick="declineCookies()">Decline</button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Cookie banner
+    (function() {
+      if (!localStorage.getItem('cookie_consent')) {
+        document.getElementById('cookie-banner').classList.add('visible');
+      }
+    })();
+    function acceptCookies() {
+      localStorage.setItem('cookie_consent', 'accepted');
+      document.getElementById('cookie-banner').classList.remove('visible');
+    }
+    function declineCookies() {
+      localStorage.setItem('cookie_consent', 'declined');
+      document.getElementById('cookie-banner').classList.remove('visible');
+    }
+
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
