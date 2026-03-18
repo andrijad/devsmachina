@@ -24,14 +24,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink: #0f0f0e;
-      --ink-2: #3a3a38;
-      --ink-3: #7a7a76;
-      --paper: #f8f6f1;
-      --paper-2: #eeeae0;
-      --accent: #c84b2f;
-      --accent-2: #e8956d;
-      --line: rgba(15,15,14,0.1);
+      --ink: #0d1b2a;
+      --ink-2: #1b3a5c;
+      --ink-3: #6b8cae;
+      --paper: #f5f7fa;
+      --paper-2: #e8edf5;
+      --accent: #2563eb;
+      --accent-2: #60a5fa;
+      --line: rgba(13,27,42,0.1);
       --serif: 'DM Serif Display', Georgia, serif;
       --sans: 'DM Sans', system-ui, sans-serif;
       --mono: 'DM Mono', monospace;
@@ -53,7 +53,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(248,246,241,0.88);
+      background: rgba(245,247,250,0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
@@ -518,7 +518,7 @@
     .waitlist-sub {
       font-size: 0.95rem;
       font-weight: 300;
-      color: rgba(248,246,241,0.6);
+      color: rgba(245,247,250,0.6);
       line-height: 1.7;
     }
 
@@ -532,15 +532,15 @@
       font-family: var(--sans);
       font-size: 0.9rem;
       padding: 0.9rem 1.1rem;
-      background: rgba(248,246,241,0.08);
-      border: 1px solid rgba(248,246,241,0.2);
+      background: rgba(245,247,250,0.08);
+      border: 1px solid rgba(245,247,250,0.2);
       color: var(--paper);
       outline: none;
       transition: border-color 0.2s;
     }
 
-    .waitlist-form input::placeholder { color: rgba(248,246,241,0.35); }
-    .waitlist-form input:focus { border-color: rgba(248,246,241,0.5); }
+    .waitlist-form input::placeholder { color: rgba(245,247,250,0.35); }
+    .waitlist-form input:focus { border-color: rgba(245,247,250,0.5); }
 
     .waitlist-form button {
       font-family: var(--sans);
@@ -568,7 +568,7 @@
     .waitlist-perk {
       font-family: var(--mono);
       font-size: 0.7rem;
-      color: rgba(248,246,241,0.45);
+      color: rgba(245,247,250,0.45);
       letter-spacing: 0.04em;
       display: flex;
       align-items: center;
@@ -614,7 +614,7 @@
       bottom: 0; left: 0; right: 0;
       z-index: 200;
       background: var(--ink);
-      border-top: 1px solid rgba(248,246,241,0.1);
+      border-top: 1px solid rgba(245,247,250,0.1);
       display: none;
     }
     .cookie-banner.visible { display: block; }
@@ -630,11 +630,11 @@
     .cookie-text {
       font-size: 0.8rem;
       font-weight: 300;
-      color: rgba(248,246,241,0.7);
+      color: rgba(245,247,250,0.7);
       line-height: 1.5;
     }
     .cookie-text a {
-      color: rgba(248,246,241,0.9);
+      color: rgba(245,247,250,0.9);
       text-decoration: underline;
       text-underline-offset: 2px;
     }
@@ -657,7 +657,7 @@
       font-family: var(--sans);
       font-size: 0.75rem;
       font-weight: 400;
-      color: rgba(248,246,241,0.45);
+      color: rgba(245,247,250,0.45);
       background: none;
       border: none;
       cursor: pointer;
