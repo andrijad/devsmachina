@@ -254,6 +254,11 @@
     .node-dot.slower { animation-delay: 0.8s; }
     .node-dot.inactive { background: var(--paper-2); border: 1px solid var(--ink-3); animation: none; }
 
+    .agent-seo .node-dot { background: #7c3aed; }
+    .agent-seo .node-status:not(.idle) { color: #7c3aed; }
+    .agent-cro .node-dot { background: #d97706; }
+    .agent-cro .node-status:not(.idle) { color: #d97706; }
+
     .node-label {
       font-family: var(--mono);
       font-size: 0.72rem;
@@ -761,7 +766,7 @@
     </div>
     <div class="hero-right">
       <div class="diagram">
-        <div class="diagram-node">
+        <div class="diagram-node agent-pricing">
           <div class="node-dot"></div>
           <span class="node-label">pricing_agent</span>
           <span class="node-status">running</span>
@@ -771,7 +776,7 @@
           <span class="diagram-label">insight extracted</span>
           <div class="diagram-arrow-line"></div>
         </div>
-        <div class="diagram-node">
+        <div class="diagram-node agent-seo">
           <div class="node-dot slow"></div>
           <span class="node-label">seo_agent</span>
           <span class="node-status">running</span>
@@ -781,7 +786,7 @@
           <span class="diagram-label">insight extracted</span>
           <div class="diagram-arrow-line"></div>
         </div>
-        <div class="diagram-node">
+        <div class="diagram-node agent-cro">
           <div class="node-dot slower"></div>
           <span class="node-label">cro_agent</span>
           <span class="node-status">running</span>
