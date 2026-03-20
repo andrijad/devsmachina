@@ -34,34 +34,30 @@
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
 
   <style>
-    /* ═══════════════════════════════════════
-       RESET & VARIABLES
-       ═══════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink: #1a1a2e;
-      --ink-2: #2a2a45;
+      /* Neutrals */
+      --ink: #12112a;
+      --ink-2: #1e1d38;
       --ink-3: #6e6e8a;
-      --paper: #faf9f6;
-      --paper-2: #f0efe9;
-      --accent: #5b6cf0;
-      --accent-bright: #8b97ff;
-      --mint: #3ecfa5;
-      --mint-dark: #2ba882;
-      --coral: #f07560;
-      --peach: #ffb088;
+      --paper: #f0eee8;
+      /* Indigo family — primary */
+      --indigo: #5b6cf0;
+      --indigo-light: #8b97ff;
+      --indigo-deep: #2d2b6b;
+      /* Amber — accent (action, energy) */
+      --amber: #EF9F27;
+      --amber-light: #FFD07A;
+      /* Tertiary — blue-adjacent, for variety */
       --lavender: #c4b5fd;
-      --sky: #7dd3fc;
-      --line: rgba(26,26,46,0.08);
-      --line-light: rgba(250,249,246,0.1);
+      /* Structural */
+      --line-light: rgba(240,238,232,0.1);
       --display: 'Outfit', system-ui, sans-serif;
       --mono: 'JetBrains Mono', monospace;
       --radius: 14px;
     }
 
-    /* CWV: font-display swap is in Google Fonts URL.
-       Fallback size-adjust to reduce CLS from font swap */
     @font-face {
       font-family: 'Outfit Fallback';
       src: local('Arial');
@@ -80,12 +76,9 @@
       font-size: 17px;
       line-height: 1.65;
       overflow-x: hidden;
-      padding-top: 72px; /* clear fixed nav — generous for high-DPI */
+      padding-top: 72px;
     }
 
-    /* ═══════════════════════════════════════
-       REDUCED MOTION — must be early
-       ═══════════════════════════════════════ */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -96,19 +89,16 @@
       .ticker-track { animation: none !important; }
     }
 
-    /* ═══════════════════════════════════════
-       NAV
-       ═══════════════════════════════════════ */
+    /* ─── NAV ─── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(26,26,46,0.85);
+      background: rgba(18,17,42,0.88);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--line-light);
     }
-
     .nav-inner {
       max-width: 1200px;
       margin: 0 auto;
@@ -117,7 +107,6 @@
       align-items: center;
       justify-content: space-between;
     }
-
     .nav-logo {
       font-family: var(--mono);
       font-size: 1rem;
@@ -127,8 +116,8 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-    .nav-logo:hover { color: var(--mint); }
-    .nav-logo span { color: var(--accent-bright); }
+    .nav-logo:hover { color: var(--amber); }
+    .nav-logo span { color: var(--indigo-light); }
 
     .nav-cta {
       font-family: var(--mono);
@@ -138,24 +127,21 @@
       text-transform: uppercase;
       color: var(--ink);
       text-decoration: none;
-      background: var(--mint);
-      border: 2px solid var(--mint);
+      background: var(--amber);
+      border: 2px solid var(--amber);
       padding: 0.6rem 1.5rem;
       border-radius: var(--radius);
       transition: all 0.25s ease;
     }
-
     .nav-cta:hover {
-      background: var(--accent-bright);
-      border-color: var(--accent-bright);
+      background: var(--amber-light);
+      border-color: var(--amber-light);
       color: var(--ink);
       transform: translateY(-1px);
-      box-shadow: 0 4px 20px rgba(139,151,255,0.35);
+      box-shadow: 0 4px 20px rgba(239,159,39,0.3);
     }
 
-    /* ═══════════════════════════════════════
-       TICKER BAR — pure CSS marquee
-       ═══════════════════════════════════════ */
+    /* ─── TICKER ─── */
     .ticker {
       background: var(--paper);
       overflow: hidden;
@@ -163,17 +149,13 @@
       white-space: nowrap;
       display: flex;
       align-items: center;
-      position: relative;
-      z-index: 1;
     }
-
     .ticker-track {
       display: inline-flex;
       align-items: center;
       animation: ticker 28s linear infinite;
       will-change: transform;
     }
-
     .ticker-item {
       font-family: var(--mono);
       font-size: 0.75rem;
@@ -187,21 +169,17 @@
       gap: 0.75rem;
       line-height: 1;
     }
-
     .ticker-item::before {
       content: '◆';
       font-size: 0.45rem;
-      color: var(--accent);
+      color: var(--indigo);
     }
-
     @keyframes ticker {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
-    /* ═══════════════════════════════════════
-       HERO — dark bg, bold color accents
-       ═══════════════════════════════════════ */
+    /* ─── HERO ─── */
     .hero {
       min-height: min(100vh, 900px);
       max-width: 1200px;
@@ -210,21 +188,19 @@
       grid-template-columns: 1.15fr 0.85fr;
       gap: 0;
     }
-
     .hero-left {
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 5rem 4rem 5rem 3rem;
     }
-
     .hero-eyebrow {
       font-family: var(--mono);
       font-size: 0.78rem;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--mint);
+      color: var(--amber);
       margin-bottom: 2rem;
       display: inline-flex;
       align-items: center;
@@ -232,16 +208,14 @@
       opacity: 0;
       animation: fadeUp 0.7s ease 0.1s forwards;
     }
-
     .hero-eyebrow::before {
       content: '';
       width: 8px; height: 8px;
       border-radius: 50%;
-      background: var(--mint);
+      background: var(--amber);
       animation: pulse 2s ease-in-out infinite;
-      box-shadow: 0 0 6px rgba(62,207,165,0.5);
+      box-shadow: 0 0 6px rgba(239,159,39,0.5);
     }
-
     .hero-title {
       font-family: var(--display);
       font-size: clamp(3.2rem, 5.5vw, 5rem);
@@ -253,24 +227,21 @@
       opacity: 0;
       animation: fadeUp 0.7s ease 0.25s forwards;
     }
-
     .hero-title em {
       font-style: italic;
-      color: var(--mint);
+      color: var(--amber);
       font-weight: 800;
     }
-
     .hero-sub {
       font-size: 1.2rem;
       font-weight: 400;
-      color: rgba(250,249,246,0.65);
+      color: rgba(240,238,232,0.65);
       line-height: 1.7;
       max-width: 480px;
       margin-bottom: 2.5rem;
       opacity: 0;
       animation: fadeUp 0.7s ease 0.4s forwards;
     }
-
     .hero-form {
       display: flex;
       gap: 0;
@@ -278,27 +249,24 @@
       opacity: 0;
       animation: fadeUp 0.7s ease 0.55s forwards;
     }
-
     .hero-form input {
       flex: 1;
       font-family: var(--display);
       font-size: 1rem;
       padding: 1rem 1.3rem;
-      border: 2px solid rgba(250,249,246,0.2);
+      border: 2px solid rgba(240,238,232,0.2);
       border-right: none;
       border-radius: var(--radius) 0 0 var(--radius);
-      background: rgba(250,249,246,0.06);
+      background: rgba(240,238,232,0.06);
       color: var(--paper);
       outline: none;
       transition: all 0.25s;
     }
-
-    .hero-form input::placeholder { color: rgba(250,249,246,0.35); }
+    .hero-form input::placeholder { color: rgba(240,238,232,0.35); }
     .hero-form input:focus {
-      border-color: var(--mint);
-      background: rgba(62,207,165,0.08);
+      border-color: var(--amber);
+      background: rgba(239,159,39,0.06);
     }
-
     .hero-form button {
       font-family: var(--mono);
       font-size: 0.8rem;
@@ -306,60 +274,55 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       padding: 1rem 1.6rem;
-      background: var(--mint);
+      background: var(--amber);
       color: var(--ink);
-      border: 2px solid var(--mint);
+      border: 2px solid var(--amber);
       border-radius: 0 var(--radius) var(--radius) 0;
       cursor: pointer;
       transition: all 0.25s ease;
       white-space: nowrap;
     }
-
     .hero-form button:hover {
-      background: var(--accent-bright);
-      border-color: var(--accent-bright);
-      box-shadow: 0 4px 20px rgba(139,151,255,0.4);
+      background: var(--amber-light);
+      border-color: var(--amber-light);
+      box-shadow: 0 4px 20px rgba(239,159,39,0.35);
     }
-
     .hero-note {
       margin-top: 1rem;
       font-size: 0.82rem;
-      color: rgba(250,249,246,0.35);
+      color: rgba(240,238,232,0.35);
       opacity: 0;
       animation: fadeUp 0.7s ease 0.65s forwards;
     }
 
-    /* ─── HERO RIGHT — agent diagram with CSS animations ─── */
+    /* ─── HERO RIGHT — agent diagram ─── */
     .hero-right {
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 5rem 3rem;
-      background: var(--accent);
+      background: var(--indigo);
       position: relative;
       overflow: hidden;
       border-radius: 0 0 0 48px;
     }
-
     .hero-right::before {
       content: '';
       position: absolute;
       top: -40%; left: -30%;
       width: 80%; height: 120%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
       pointer-events: none;
     }
-
     .diagram {
       width: 100%;
       max-width: 420px;
       opacity: 0;
       animation: fadeIn 1s ease 0.7s forwards;
     }
-
     .diagram-node {
-      background: rgba(26,26,46,0.35);
-      border: 1px solid rgba(250,249,246,0.15);
+      background: rgba(18,17,42,0.4);
+      border: 1px solid rgba(240,238,232,0.15);
       padding: 1.2rem 1.5rem;
       margin-bottom: 0.7rem;
       display: flex;
@@ -369,9 +332,7 @@
       transition: all 0.3s ease;
       animation: nodeSlideIn 0.6s ease backwards;
     }
-
     .diagram-node:nth-child(1) { animation-delay: 0.9s; }
-    /* arrows don't get numbered since we target .diagram-node */
     .diagram-node:nth-child(2) { animation-delay: 1.3s; }
     .diagram-node:nth-child(3) { animation-delay: 1.7s; }
     .diagram-node:nth-child(4) { animation-delay: 2.1s; }
@@ -383,54 +344,45 @@
 
     .diagram-node:hover {
       border-color: var(--paper);
-      background: rgba(26,26,46,0.55);
+      background: rgba(18,17,42,0.6);
       transform: translateX(6px);
     }
-
     .node-dot {
       width: 12px; height: 12px;
       border-radius: 50%;
-      background: var(--mint);
+      background: var(--amber);
       flex-shrink: 0;
       animation: pulse 2s ease-in-out infinite;
-      box-shadow: 0 0 10px rgba(62,207,165,0.5);
+      box-shadow: 0 0 10px rgba(239,159,39,0.5);
     }
-
     .node-dot.slow { animation-delay: 0.4s; }
     .node-dot.slower { animation-delay: 0.8s; }
     .node-dot.inactive {
-      background: rgba(250,249,246,0.25);
-      border: 1px solid rgba(250,249,246,0.35);
+      background: rgba(240,238,232,0.25);
+      border: 1px solid rgba(240,238,232,0.35);
       animation: none;
       box-shadow: none;
     }
-
-    .agent-seo .node-dot { background: var(--lavender); box-shadow: 0 0 10px rgba(196,181,253,0.5); }
-    .agent-seo .node-status:not(.idle) { color: var(--lavender); }
-    .agent-cro .node-dot { background: var(--peach); box-shadow: 0 0 10px rgba(255,176,136,0.5); }
-    .agent-cro .node-status:not(.idle) { color: var(--peach); }
+    .agent-seo .node-dot { background: var(--indigo-light); box-shadow: 0 0 10px rgba(139,151,255,0.5); }
+    .agent-seo .node-status:not(.idle) { color: var(--indigo-light); }
+    .agent-cro .node-dot { background: var(--amber-light); box-shadow: 0 0 10px rgba(255,208,122,0.5); }
+    .agent-cro .node-status:not(.idle) { color: var(--amber-light); }
 
     .node-label {
       font-family: var(--mono);
       font-size: 0.92rem;
-      color: rgba(250,249,246,0.85);
+      color: rgba(240,238,232,0.85);
     }
-
     .node-status {
       margin-left: auto;
       font-family: var(--mono);
       font-size: 0.82rem;
-      color: var(--mint);
+      color: var(--amber);
       letter-spacing: 0.04em;
     }
+    .node-status.idle { color: rgba(240,238,232,0.4); }
 
-    .node-status.idle { color: rgba(250,249,246,0.4); }
-
-    /* Agent status shimmer — pure CSS */
-    .node-status:not(.idle) {
-      position: relative;
-      overflow: hidden;
-    }
+    .node-status:not(.idle) { position: relative; overflow: hidden; }
     .node-status:not(.idle)::after {
       content: '';
       position: absolute;
@@ -438,7 +390,6 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
       animation: shimmer 3s ease-in-out infinite;
     }
-
     @keyframes shimmer {
       0%, 100% { left: -100%; }
       50% { left: 100%; }
@@ -450,36 +401,31 @@
       padding: 0 1.5rem;
       margin-bottom: 0.7rem;
     }
-
     .diagram-arrow-line {
       flex: 1;
       height: 1px;
-      background: rgba(250,249,246,0.12);
+      background: rgba(240,238,232,0.12);
       position: relative;
     }
-
     .diagram-arrow-line::after {
       content: '';
       position: absolute;
       right: -1px; top: -3px;
       width: 6px; height: 6px;
-      border-right: 1px solid rgba(250,249,246,0.3);
-      border-bottom: 1px solid rgba(250,249,246,0.3);
+      border-right: 1px solid rgba(240,238,232,0.3);
+      border-bottom: 1px solid rgba(240,238,232,0.3);
       transform: rotate(-45deg);
     }
-
-    /* Animated data flow on the arrow lines */
     .diagram-arrow-line::before {
       content: '';
       position: absolute;
       top: -1px; left: 0;
       width: 20px; height: 3px;
-      background: var(--mint);
+      background: var(--amber);
       border-radius: 2px;
       opacity: 0.6;
       animation: flowRight 2.5s ease-in-out infinite;
     }
-
     .diagram-arrow:nth-child(2) .diagram-arrow-line::before { animation-delay: 0s; }
     .diagram-arrow:nth-child(4) .diagram-arrow-line::before { animation-delay: 0.8s; }
     .diagram-arrow:nth-child(6) .diagram-arrow-line::before { animation-delay: 1.6s; }
@@ -490,24 +436,20 @@
       80% { opacity: 0.6; }
       100% { left: calc(100% - 20px); opacity: 0; }
     }
-
     .diagram-label {
       font-family: var(--mono);
       font-size: 0.75rem;
-      color: rgba(250,249,246,0.4);
+      color: rgba(240,238,232,0.4);
       padding: 0 0.7rem;
       white-space: nowrap;
     }
 
-    /* ═══════════════════════════════════════
-       SECTION COMMON
-       ═══════════════════════════════════════ */
+    /* ─── SECTION COMMON ─── */
     .section-inner {
       max-width: 1200px;
       margin: 0 auto;
       padding: 6rem 3rem;
     }
-
     .section-tag {
       font-family: var(--mono);
       font-size: 0.78rem;
@@ -516,7 +458,6 @@
       text-transform: uppercase;
       margin-bottom: 1.25rem;
     }
-
     .section-title {
       font-family: var(--display);
       font-size: clamp(2.2rem, 4vw, 3.4rem);
@@ -525,7 +466,6 @@
       letter-spacing: -0.03em;
       margin-bottom: 1.25rem;
     }
-
     .section-sub {
       font-size: 1.15rem;
       font-weight: 400;
@@ -533,16 +473,13 @@
       line-height: 1.7;
     }
 
-    /* ═══════════════════════════════════════
-       HOW IT WORKS — mint background
-       ═══════════════════════════════════════ */
+    /* ─── HOW IT WORKS — deep indigo bg ─── */
     #how {
-      background: var(--mint);
-      color: var(--ink);
+      background: var(--indigo-deep);
+      color: var(--paper);
     }
-
-    #how .section-tag { color: var(--ink); opacity: 0.6; }
-    #how .section-sub { color: var(--ink-2); }
+    #how .section-tag { color: var(--amber); }
+    #how .section-sub { color: rgba(240,238,232,0.6); }
 
     .steps {
       display: grid;
@@ -550,35 +487,30 @@
       gap: 0;
       margin-top: 4rem;
     }
-
     .step {
       padding: 2.5rem 2rem;
       border: none;
-      border-right: 1px solid rgba(250,249,246,0.08);
+      border-right: 1px solid rgba(240,238,232,0.06);
       position: relative;
       transition: all 0.3s ease;
       background: var(--ink);
       color: var(--paper);
     }
-
     .step:first-child { border-radius: var(--radius) 0 0 var(--radius); }
     .step:last-child { border-right: none; border-radius: 0 var(--radius) var(--radius) 0; }
-
     .step:hover {
       background: var(--ink-2);
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(26,26,46,0.3);
+      box-shadow: 0 12px 32px rgba(18,17,42,0.4);
       z-index: 1;
     }
-
     .step-num {
       font-family: var(--mono);
       font-size: 0.7rem;
-      color: var(--mint);
+      color: var(--amber);
       letter-spacing: 0.08em;
       margin-bottom: 1.5rem;
     }
-
     .step-title {
       font-family: var(--display);
       font-size: 1.3rem;
@@ -587,50 +519,42 @@
       line-height: 1.2;
       color: var(--paper);
     }
-
     .step-desc {
       font-size: 0.95rem;
       font-weight: 400;
-      color: rgba(250,249,246,0.55);
+      color: rgba(240,238,232,0.55);
       line-height: 1.65;
     }
 
-    /* ═══════════════════════════════════════
-       THE AGENTS — dark background
-       ═══════════════════════════════════════ */
+    /* ─── AGENTS — dark bg ─── */
     #agents {
       background: var(--ink);
       color: var(--paper);
     }
-
-    #agents .section-tag { color: var(--accent-bright); }
-    #agents .section-sub { color: rgba(250,249,246,0.6); }
+    #agents .section-tag { color: var(--indigo-light); }
+    #agents .section-sub { color: rgba(240,238,232,0.6); }
 
     .agents-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      background: rgba(250,249,246,0.06);
+      background: rgba(240,238,232,0.06);
       margin-top: 4rem;
       border-radius: var(--radius);
       overflow: hidden;
     }
-
     .agent-card {
       background: var(--ink-2);
       padding: 2.5rem 2rem;
       transition: all 0.3s ease;
     }
-
     .agent-card:hover {
-      background: var(--accent);
+      background: var(--indigo);
     }
-
     .agent-card:hover .agent-icon,
     .agent-card:hover .agent-name,
-    .agent-card:hover .agent-desc {
-      color: var(--paper);
-    }
+    .agent-card:hover .agent-desc { color: var(--paper); }
+    .agent-card:hover .agent-icon::before { background: var(--paper); }
 
     .agent-icon {
       font-family: var(--mono);
@@ -643,29 +567,25 @@
       gap: 0.6rem;
       transition: color 0.3s;
     }
-
     .agent-icon::before {
       content: '';
       width: 8px; height: 8px;
       border-radius: 50%;
       transition: background 0.3s;
     }
-
-    /* Each agent gets its own accent color */
-    .agent-card:nth-child(1) .agent-icon { color: var(--accent-bright); }
-    .agent-card:nth-child(1) .agent-icon::before { background: var(--accent-bright); }
-    .agent-card:nth-child(2) .agent-icon { color: var(--mint); }
-    .agent-card:nth-child(2) .agent-icon::before { background: var(--mint); }
-    .agent-card:nth-child(3) .agent-icon { color: var(--coral); }
-    .agent-card:nth-child(3) .agent-icon::before { background: var(--coral); }
-    .agent-card:nth-child(4) .agent-icon { color: var(--peach); }
-    .agent-card:nth-child(4) .agent-icon::before { background: var(--peach); }
-    .agent-card:nth-child(5) .agent-icon { color: var(--lavender); }
-    .agent-card:nth-child(5) .agent-icon::before { background: var(--lavender); }
-    .agent-card:nth-child(6) .agent-icon { color: var(--sky); }
-    .agent-card:nth-child(6) .agent-icon::before { background: var(--sky); }
-
-    .agent-card:hover .agent-icon::before { background: var(--paper); }
+    /* 3-color agent dots: amber, indigo-light, lavender */
+    .agent-card:nth-child(1) .agent-icon { color: var(--amber); }
+    .agent-card:nth-child(1) .agent-icon::before { background: var(--amber); }
+    .agent-card:nth-child(2) .agent-icon { color: var(--indigo-light); }
+    .agent-card:nth-child(2) .agent-icon::before { background: var(--indigo-light); }
+    .agent-card:nth-child(3) .agent-icon { color: var(--amber); }
+    .agent-card:nth-child(3) .agent-icon::before { background: var(--amber); }
+    .agent-card:nth-child(4) .agent-icon { color: var(--lavender); }
+    .agent-card:nth-child(4) .agent-icon::before { background: var(--lavender); }
+    .agent-card:nth-child(5) .agent-icon { color: var(--indigo-light); }
+    .agent-card:nth-child(5) .agent-icon::before { background: var(--indigo-light); }
+    .agent-card:nth-child(6) .agent-icon { color: var(--lavender); }
+    .agent-card:nth-child(6) .agent-icon::before { background: var(--lavender); }
 
     .agent-name {
       font-family: var(--display);
@@ -675,23 +595,19 @@
       color: var(--paper);
       transition: color 0.3s;
     }
-
     .agent-desc {
       font-size: 0.95rem;
       font-weight: 400;
-      color: rgba(250,249,246,0.55);
+      color: rgba(240,238,232,0.55);
       line-height: 1.65;
       transition: color 0.3s;
     }
 
-    /* ═══════════════════════════════════════
-       WHO IT'S FOR — accent blue background
-       ═══════════════════════════════════════ */
+    /* ─── WHO IT'S FOR — indigo-light bg ─── */
     #about {
-      background: var(--accent-bright);
+      background: var(--indigo-light);
       color: var(--ink);
     }
-
     #about .section-tag { color: var(--ink); opacity: 0.5; }
     #about .section-title { color: var(--ink); }
     #about .section-sub { color: var(--ink-2); }
@@ -703,24 +619,20 @@
       margin-top: 4rem;
       align-items: start;
     }
-
     .audience-list { list-style: none; }
-
     .audience-list li {
       display: flex;
       align-items: flex-start;
       gap: 1rem;
       padding: 1.25rem 0;
-      border-bottom: 1px solid rgba(26,26,46,0.1);
+      border-bottom: 1px solid rgba(18,17,42,0.1);
       font-size: 1.05rem;
       font-weight: 400;
       color: var(--ink-2);
       line-height: 1.6;
       transition: color 0.2s;
     }
-
     .audience-list li:hover { color: var(--ink); }
-
     .audience-list li::before {
       content: '→';
       font-family: var(--mono);
@@ -730,7 +642,6 @@
       flex-shrink: 0;
       transition: transform 0.2s;
     }
-
     .audience-list li:hover::before { transform: translateX(4px); }
 
     .audience-quote {
@@ -740,18 +651,16 @@
       border-radius: var(--radius);
       position: relative;
     }
-
     .audience-quote::before {
       content: '"';
       position: absolute;
       top: -12px; left: 20px;
       font-size: 5rem;
       font-weight: 800;
-      color: var(--accent-bright);
+      color: var(--amber);
       line-height: 1;
-      opacity: 0.3;
+      opacity: 0.35;
     }
-
     .audience-quote p {
       font-family: var(--display);
       font-size: 1.3rem;
@@ -760,34 +669,29 @@
       color: var(--paper);
       margin-bottom: 1.5rem;
     }
-
     .audience-quote cite {
       font-family: var(--mono);
       font-size: 0.75rem;
-      color: rgba(250,249,246,0.4);
+      color: rgba(240,238,232,0.4);
       letter-spacing: 0.04em;
       font-style: normal;
     }
 
-    /* ═══════════════════════════════════════
-       WAITLIST — accent indigo background
-       ═══════════════════════════════════════ */
+    /* ─── WAITLIST — indigo bg ─── */
     .waitlist-section {
-      background: var(--accent);
+      background: var(--indigo);
       color: var(--paper);
       position: relative;
       overflow: hidden;
     }
-
     .waitlist-section::before {
       content: '';
       position: absolute;
       bottom: -40%; left: -20%;
       width: 60%; height: 140%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 55%);
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 55%);
       pointer-events: none;
     }
-
     .waitlist-inner {
       max-width: 1200px;
       margin: 0 auto;
@@ -798,7 +702,6 @@
       align-items: center;
       position: relative;
     }
-
     .waitlist-title {
       font-family: var(--display);
       font-size: clamp(2.2rem, 4vw, 3.4rem);
@@ -808,43 +711,37 @@
       color: var(--paper);
       margin-bottom: 1.25rem;
     }
-
     .waitlist-title em {
       font-style: italic;
-      color: var(--ink);
+      color: var(--amber);
     }
-
     .waitlist-sub {
       font-size: 1.1rem;
       font-weight: 400;
-      color: rgba(250,249,246,0.7);
+      color: rgba(240,238,232,0.7);
       line-height: 1.7;
     }
-
     .waitlist-form {
       display: flex;
       flex-direction: column;
       gap: 0.85rem;
     }
-
     .waitlist-form input {
       font-family: var(--display);
       font-size: 1rem;
       padding: 1rem 1.3rem;
-      background: rgba(26,26,46,0.2);
-      border: 2px solid rgba(250,249,246,0.2);
+      background: rgba(18,17,42,0.25);
+      border: 2px solid rgba(240,238,232,0.2);
       border-radius: var(--radius);
       color: var(--paper);
       outline: none;
       transition: all 0.25s;
     }
-
-    .waitlist-form input::placeholder { color: rgba(250,249,246,0.4); }
+    .waitlist-form input::placeholder { color: rgba(240,238,232,0.4); }
     .waitlist-form input:focus {
       border-color: var(--paper);
-      background: rgba(26,26,46,0.35);
+      background: rgba(18,17,42,0.4);
     }
-
     .waitlist-form button {
       font-family: var(--mono);
       font-size: 0.85rem;
@@ -852,53 +749,45 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       padding: 1rem 1.6rem;
-      background: var(--ink);
-      color: var(--mint);
-      border: 2px solid var(--ink);
+      background: var(--amber);
+      color: var(--ink);
+      border: 2px solid var(--amber);
       border-radius: var(--radius);
       cursor: pointer;
       transition: all 0.25s;
     }
-
     .waitlist-form button:hover {
-      background: var(--mint);
-      color: var(--ink);
-      border-color: var(--mint);
+      background: var(--amber-light);
+      border-color: var(--amber-light);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(26,26,46,0.3);
+      box-shadow: 0 8px 24px rgba(239,159,39,0.3);
     }
-
     .waitlist-perks {
       margin-top: 1.5rem;
       display: flex;
       flex-direction: column;
       gap: 0.6rem;
     }
-
     .waitlist-perk {
       font-family: var(--mono);
       font-size: 0.75rem;
-      color: rgba(250,249,246,0.55);
+      color: rgba(240,238,232,0.55);
       letter-spacing: 0.04em;
       display: flex;
       align-items: center;
       gap: 0.6rem;
     }
-
     .waitlist-perk::before {
       content: '✓';
-      color: var(--mint);
+      color: var(--amber);
       font-weight: 700;
     }
 
-    /* ═══════════════════════════════════════
-       FOOTER — dark
-       ═══════════════════════════════════════ */
+    /* ─── FOOTER ─── */
     footer {
       background: var(--ink);
       border-top: 1px solid var(--line-light);
     }
-
     .footer-inner {
       max-width: 1200px;
       margin: 0 auto;
@@ -907,34 +796,28 @@
       align-items: center;
       justify-content: space-between;
     }
-
     .footer-logo {
       font-family: var(--mono);
       font-size: 0.9rem;
       font-weight: 500;
-      color: rgba(250,249,246,0.4);
+      color: rgba(240,238,232,0.4);
     }
-
-    .footer-logo span { color: var(--accent-bright); }
-
+    .footer-logo span { color: var(--indigo-light); }
     .footer-copy {
       font-family: var(--mono);
       font-size: 0.75rem;
-      color: rgba(250,249,246,0.3);
+      color: rgba(240,238,232,0.3);
     }
-
     .footer-link {
       font-family: var(--mono);
       font-size: 0.75rem;
-      color: rgba(250,249,246,0.4);
+      color: rgba(240,238,232,0.4);
       text-decoration: none;
       transition: color 0.2s;
     }
-    .footer-link:hover { color: var(--mint); }
+    .footer-link:hover { color: var(--amber); }
 
-    /* ═══════════════════════════════════════
-       COOKIE BANNER
-       ═══════════════════════════════════════ */
+    /* ─── COOKIE BANNER ─── */
     .cookie-banner {
       position: fixed;
       bottom: 0; left: 0; right: 0;
@@ -979,7 +862,7 @@
       cursor: pointer;
       transition: all 0.25s;
     }
-    .cookie-accept:hover { background: var(--accent); }
+    .cookie-accept:hover { background: var(--indigo); }
     .cookie-decline {
       font-family: var(--mono);
       font-size: 0.78rem;
@@ -994,7 +877,6 @@
       transition: color 0.2s;
     }
     .cookie-decline:hover { color: var(--ink); }
-
     @media (max-width: 600px) {
       .cookie-inner { flex-direction: column; gap: 1rem; padding: 1rem 1.5rem; }
     }
@@ -1003,30 +885,25 @@
       display: none;
       font-family: var(--mono);
       font-size: 0.85rem;
-      color: var(--mint);
+      color: var(--amber);
       letter-spacing: 0.04em;
       padding: 0.85rem 0;
     }
 
-    /* ═══════════════════════════════════════
-       ANIMATIONS
-       ═══════════════════════════════════════ */
+    /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to   { opacity: 1; }
     }
-
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
       50%       { opacity: 0.45; transform: scale(0.7); }
     }
 
-    /* ─── SCROLL REVEAL — CSS-only with animation-timeline where supported ─── */
     .reveal {
       opacity: 1;
       transform: translateY(0);
@@ -1041,15 +918,13 @@
       transform: translateY(0);
     }
 
-    /* ═══════════════════════════════════════
-       RESPONSIVE
-       ═══════════════════════════════════════ */
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .hero-right { display: none; }
       .hero-left { padding: 4rem 2rem 3.5rem; }
       .steps { grid-template-columns: 1fr 1fr; }
-      .step { border-bottom: 1px solid rgba(250,249,246,0.08); }
+      .step { border-bottom: 1px solid rgba(240,238,232,0.06); }
       .step:first-child { border-radius: var(--radius) 0 0 0; }
       .step:nth-child(2) { border-radius: 0 var(--radius) 0 0; border-right: none; }
       .step:nth-child(3) { border-radius: 0 0 0 var(--radius); }
@@ -1061,7 +936,6 @@
       .nav-inner { padding: 1rem 2rem; }
       .footer-inner { padding: 1.5rem 2rem; }
     }
-
     @media (max-width: 600px) {
       .nav-inner { padding: 1rem 1.5rem; }
       .hero-left { padding: 3.5rem 1.5rem 3rem; }
@@ -1117,7 +991,6 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-  <!-- NAV -->
   <nav>
     <div class="nav-inner">
       <a href="#" class="nav-logo">devs<span>machina</span>.app</a>
@@ -1125,7 +998,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </nav>
 
-  <!-- TICKER BAR — pure CSS animation, no JS -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
       <span class="ticker-item">Pricing Agent</span>
@@ -1147,16 +1019,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
       <div class="hero-eyebrow">Private Beta — Limited Access</div>
-      <h1 class="hero-title">
-        The machine<br>that <em>acts</em><br>on your data.
-      </h1>
-      <p class="hero-sub">
-        DevsMachina deploys autonomous AI agents across your ecommerce operations — analyzing pricing, SEO, conversion, and inventory — then delivers precise actions, not reports.
-      </p>
+      <h1 class="hero-title">The machine<br>that <em>acts</em><br>on your data.</h1>
+      <p class="hero-sub">DevsMachina deploys autonomous AI agents across your ecommerce operations — analyzing pricing, SEO, conversion, and inventory — then delivers precise actions, not reports.</p>
       <form class="hero-form" id="hero-form" action="https://formspree.io/f/xjgapjby" method="POST">
         <input type="email" name="email" placeholder="your@email.com" required>
         <input type="hidden" name="_source" value="hero">
@@ -1207,7 +1074,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
   <section id="how">
     <div class="section-inner">
       <div class="reveal">
@@ -1216,31 +1082,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="section-sub">Agents run continuously across your store's data sources and push decisions — not dashboards — to where your team operates.</p>
       </div>
       <div class="steps reveal">
-        <div class="step">
-          <div class="step-num">01 — INGEST</div>
-          <div class="step-title">Connect your sources</div>
-          <p class="step-desc">WooCommerce, GA4, competitor feeds, ad platforms. DevsMachina ingests from all relevant data sources automatically.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">02 — ANALYZE</div>
-          <div class="step-title">Agents go to work</div>
-          <p class="step-desc">Specialized agents run continuously — each focused on one operational domain. Pricing, SEO, CRO, inventory, localization.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">03 — EXTRACT</div>
-          <div class="step-title">Insights become actions</div>
-          <p class="step-desc">No reports. No charts to interpret. Each agent produces a specific, actionable recommendation with supporting evidence.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">04 — DISPATCH</div>
-          <div class="step-title">Delivered where it matters</div>
-          <p class="step-desc">Actions go to Slack, email, or directly into your systems. The right person gets the right signal at the right time.</p>
-        </div>
+        <div class="step"><div class="step-num">01 — INGEST</div><div class="step-title">Connect your sources</div><p class="step-desc">WooCommerce, GA4, competitor feeds, ad platforms. DevsMachina ingests from all relevant data sources automatically.</p></div>
+        <div class="step"><div class="step-num">02 — ANALYZE</div><div class="step-title">Agents go to work</div><p class="step-desc">Specialized agents run continuously — each focused on one operational domain. Pricing, SEO, CRO, inventory, localization.</p></div>
+        <div class="step"><div class="step-num">03 — EXTRACT</div><div class="step-title">Insights become actions</div><p class="step-desc">No reports. No charts to interpret. Each agent produces a specific, actionable recommendation with supporting evidence.</p></div>
+        <div class="step"><div class="step-num">04 — DISPATCH</div><div class="step-title">Delivered where it matters</div><p class="step-desc">Actions go to Slack, email, or directly into your systems. The right person gets the right signal at the right time.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- THE AGENTS -->
   <section id="agents">
     <div class="section-inner">
       <div class="reveal">
@@ -1249,41 +1098,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="section-sub">Each agent is purpose-built for a specific operational domain. They run independently and report to a central orchestrator.</p>
       </div>
       <div class="agents-grid reveal">
-        <div class="agent-card">
-          <div class="agent-icon">PRICING</div>
-          <div class="agent-name">Pricing Intelligence</div>
-          <p class="agent-desc">Tracks competitor prices across markets, detects margin opportunities, and flags pricing anomalies before they cost you revenue.</p>
-        </div>
-        <div class="agent-card">
-          <div class="agent-icon">SEO</div>
-          <div class="agent-name">SEO Monitor</div>
-          <p class="agent-desc">Monitors keyword rankings, detects traffic shifts, and surfaces content gaps with specific remediation steps.</p>
-        </div>
-        <div class="agent-card">
-          <div class="agent-icon">CRO</div>
-          <div class="agent-name">Conversion Audit</div>
-          <p class="agent-desc">Analyzes funnel behavior, identifies friction points, and proposes targeted experiments based on real session data.</p>
-        </div>
-        <div class="agent-card">
-          <div class="agent-icon">REPORTING</div>
-          <div class="agent-name">Operations Report</div>
-          <p class="agent-desc">Synthesizes GA4, ad spend, and revenue data into a weekly digest with variance analysis and trend alerts.</p>
-        </div>
-        <div class="agent-card">
-          <div class="agent-icon">INVENTORY</div>
-          <div class="agent-name">Inventory Signals</div>
-          <p class="agent-desc">Detects low stock risks, seasonal demand shifts, and supplier lead time mismatches before they become stockouts.</p>
-        </div>
-        <div class="agent-card">
-          <div class="agent-icon">LOCALIZATION</div>
-          <div class="agent-name">Localization Coverage</div>
-          <p class="agent-desc">Audits multilingual store coverage, flags untranslated content, and tracks localization gaps across target markets.</p>
-        </div>
+        <div class="agent-card"><div class="agent-icon">PRICING</div><div class="agent-name">Pricing Intelligence</div><p class="agent-desc">Tracks competitor prices across markets, detects margin opportunities, and flags pricing anomalies before they cost you revenue.</p></div>
+        <div class="agent-card"><div class="agent-icon">SEO</div><div class="agent-name">SEO Monitor</div><p class="agent-desc">Monitors keyword rankings, detects traffic shifts, and surfaces content gaps with specific remediation steps.</p></div>
+        <div class="agent-card"><div class="agent-icon">CRO</div><div class="agent-name">Conversion Audit</div><p class="agent-desc">Analyzes funnel behavior, identifies friction points, and proposes targeted experiments based on real session data.</p></div>
+        <div class="agent-card"><div class="agent-icon">REPORTING</div><div class="agent-name">Operations Report</div><p class="agent-desc">Synthesizes GA4, ad spend, and revenue data into a weekly digest with variance analysis and trend alerts.</p></div>
+        <div class="agent-card"><div class="agent-icon">INVENTORY</div><div class="agent-name">Inventory Signals</div><p class="agent-desc">Detects low stock risks, seasonal demand shifts, and supplier lead time mismatches before they become stockouts.</p></div>
+        <div class="agent-card"><div class="agent-icon">LOCALIZATION</div><div class="agent-name">Localization Coverage</div><p class="agent-desc">Audits multilingual store coverage, flags untranslated content, and tracks localization gaps across target markets.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- WHO IT'S FOR -->
   <section id="about">
     <div class="section-inner">
       <div class="reveal">
@@ -1305,7 +1129,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- WAITLIST -->
   <section class="waitlist-section" id="waitlist">
     <div class="waitlist-inner">
       <div>
@@ -1326,12 +1149,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="waitlist-perk">Direct access to the founding team</div>
           <div class="waitlist-perk">Input on agent roadmap and priorities</div>
         </div>
-        <div class="success-msg" id="waitlist-success" style="color: var(--mint);">✓ You're on the list. We'll reach out within 48 hours.</div>
+        <div class="success-msg" id="waitlist-success">✓ You're on the list. We'll reach out within 48 hours.</div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-logo">devs<span>machina</span>.app</div>
@@ -1342,12 +1164,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </footer>
 
-  <!-- COOKIE BANNER -->
   <div class="cookie-banner" id="cookie-banner">
     <div class="cookie-inner">
-      <p class="cookie-text">
-        This site uses cookies for spam prevention (Cloudflare Turnstile), analytics (Google Analytics 4 via GTM), and loads fonts from Google Fonts. <a href="/privacy">Privacy Policy</a>
-      </p>
+      <p class="cookie-text">This site uses cookies for spam prevention (Cloudflare Turnstile), analytics (Google Analytics 4 via GTM), and loads fonts from Google Fonts. <a href="/privacy">Privacy Policy</a></p>
       <div class="cookie-actions">
         <button class="cookie-accept" onclick="acceptCookies()">Got it</button>
         <button class="cookie-decline" onclick="declineCookies()">Decline</button>
@@ -1356,7 +1175,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <script>
-    // Cookie banner
     (function() {
       if (!localStorage.getItem('cookie_consent')) {
         document.getElementById('cookie-banner').classList.add('visible');
@@ -1370,11 +1188,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       localStorage.setItem('cookie_consent', 'declined');
       document.getElementById('cookie-banner').classList.remove('visible');
     }
-
-    // Mark JS as loaded so reveal animations work
     document.body.classList.add('js-loaded');
-
-    // Scroll reveal — lightweight IntersectionObserver
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
@@ -1386,7 +1200,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
 
-    // Form handling — Formspree + Turnstile (unchanged)
     const TURNSTILE_SITEKEY = '0x4AAAAAACsW-ibG9m4hyKvk';
     const turnstileIds = {};
     const pendingSubmit = {};
