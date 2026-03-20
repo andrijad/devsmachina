@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" media="print" onload="this.onload=null;this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"></noscript>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -806,7 +806,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <form class="hero-form" id="hero-form" action="https://formspree.io/f/xjgapjby" method="POST">
         <input type="email" name="email" placeholder="your@email.com" required>
         <input type="hidden" name="_source" value="hero">
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAACsW-ibG9m4hyKvk" data-size="invisible" ></div>
+        <div id="hero-turnstile"></div>
         <button type="submit">Request Access</button>
       </form>
       <p class="hero-note">No credit card. No spam. Early access only.</p>
@@ -966,7 +966,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input type="text" name="store_url" placeholder="Store URL (optional)">
 
           <input type="hidden" name="_source" value="waitlist">
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAACsW-ibG9m4hyKvk" data-size="invisible" ></div>
+          <div id="waitlist-turnstile"></div>
           <button type="submit">Request Early Access</button>
         </form>
         <div class="waitlist-perks">
@@ -994,7 +994,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="cookie-banner" id="cookie-banner">
     <div class="cookie-inner">
       <p class="cookie-text">
-        This site uses functional cookies for spam prevention (Cloudflare Turnstile) and loads fonts from Google Fonts. No tracking or analytics cookies are used. <a href="/privacy">Privacy Policy</a>
+        This site uses cookies for spam prevention (Cloudflare Turnstile), analytics (Google Analytics 4 via GTM), and loads fonts from Google Fonts. <a href="/privacy">Privacy Policy</a>
       </p>
       <div class="cookie-actions">
         <button class="cookie-accept" onclick="acceptCookies()">Got it</button>
@@ -1064,8 +1064,58 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }
 
-    handleForm('hero-form', 'hero-success');
-    handleForm('waitlist-form', 'waitlist-success');
+    const TURNSTILE_SITEKEY = '0x4AAAAAACsW-ibG9m4hyKvk';
+    const turnstileIds = {};
+
+    async function submitForm(formId, successId, token) {
+      const form = document.getElementById(formId);
+      const success = document.getElementById(successId);
+      const btn = form.querySelector('button[type="submit"]');
+      const data = new FormData(form);
+      data.set('cf-turnstile-response', token);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+        } else {
+          btn.textContent = formId === 'hero-form' ? 'Request Access' : 'Request Early Access';
+          btn.disabled = false;
+          turnstile.reset(turnstileIds[formId]);
+        }
+      } catch {
+        btn.textContent = formId === 'hero-form' ? 'Request Access' : 'Request Early Access';
+        btn.disabled = false;
+        turnstile.reset(turnstileIds[formId]);
+      }
+    }
+
+    window.onTurnstileLoad = function() {
+      ['hero-form', 'waitlist-form'].forEach(function(formId) {
+        const successId = formId === 'hero-form' ? 'hero-success' : 'waitlist-success';
+        const containerId = formId === 'hero-form' ? '#hero-turnstile' : '#waitlist-turnstile';
+        turnstileIds[formId] = turnstile.render(containerId, {
+          sitekey: TURNSTILE_SITEKEY,
+          size: 'invisible',
+          callback: function(token) {
+            submitForm(formId, successId, token);
+          }
+        });
+        const form = document.getElementById(formId);
+        if (!form) return;
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const btn = form.querySelector('button[type="submit"]');
+          btn.textContent = 'Sending...';
+          btn.disabled = true;
+          turnstile.execute(turnstileIds[formId]);
+        });
+      });
+    };
   </script>
 
 </body>
