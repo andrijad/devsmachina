@@ -753,6 +753,12 @@
       background-color: rgba(18,17,42,0.4);
     }
     .waitlist-form select option[value=""] { color: rgba(240,238,232,0.65); }
+    #waitlist-turnstile {
+      margin: 0.25rem 0;
+    }
+    #waitlist-turnstile iframe {
+      border-radius: var(--radius);
+    }
     .waitlist-form button {
       font-family: var(--mono);
       font-size: 0.85rem;
@@ -1219,7 +1225,7 @@
 
     const TURNSTILE_SITEKEY = '0x4AAAAAACsW-ibG9m4hyKvk';
     const turnstileIds = {};
-    const pendingSubmit = {};
+
     const storedToken = {};
 
     async function submitForm(formId, successId, token) {
@@ -1253,17 +1259,13 @@
       ['waitlist-form'].forEach(function(formId) {
         const successId = 'waitlist-success';
         const containerId = '#waitlist-turnstile';
-        pendingSubmit[formId] = false;
         turnstileIds[formId] = turnstile.render(containerId, {
           sitekey: TURNSTILE_SITEKEY,
-          appearance: 'execute',
-          'response-timeout': 60000,
           callback: function(token) {
             storedToken[formId] = token;
-            if (pendingSubmit[formId]) {
-              pendingSubmit[formId] = false;
-              submitForm(formId, successId, token);
-            }
+          },
+          'expired-callback': function() {
+            storedToken[formId] = null;
           }
         });
         const form = document.getElementById(formId);
@@ -1278,8 +1280,8 @@
             storedToken[formId] = null;
             submitForm(formId, successId, token);
           } else {
-            pendingSubmit[formId] = true;
-            turnstile.execute(turnstileIds[formId]);
+            btn.textContent = 'Request Early Access';
+            btn.disabled = false;
           }
         });
       });
