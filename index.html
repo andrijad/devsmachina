@@ -1100,7 +1100,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const containerId = formId === 'hero-form' ? '#hero-turnstile' : '#waitlist-turnstile';
         turnstileIds[formId] = turnstile.render(containerId, {
           sitekey: TURNSTILE_SITEKEY,
-          size: 'invisible',
+          appearance: 'interaction-only',
           callback: function(token) {
             submitForm(formId, successId, token);
           }
