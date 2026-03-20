@@ -1066,6 +1066,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const TURNSTILE_SITEKEY = '0x4AAAAAACsW-ibG9m4hyKvk';
     const turnstileIds = {};
+    const pendingSubmit = {};
 
     async function submitForm(formId, successId, token) {
       const form = document.getElementById(formId);
@@ -1098,10 +1099,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       ['hero-form', 'waitlist-form'].forEach(function(formId) {
         const successId = formId === 'hero-form' ? 'hero-success' : 'waitlist-success';
         const containerId = formId === 'hero-form' ? '#hero-turnstile' : '#waitlist-turnstile';
+        pendingSubmit[formId] = false;
         turnstileIds[formId] = turnstile.render(containerId, {
           sitekey: TURNSTILE_SITEKEY,
           appearance: 'interaction-only',
           callback: function(token) {
+            if (!pendingSubmit[formId]) return;
+            pendingSubmit[formId] = false;
             submitForm(formId, successId, token);
           }
         });
@@ -1112,6 +1116,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const btn = form.querySelector('button[type="submit"]');
           btn.textContent = 'Sending...';
           btn.disabled = true;
+          pendingSubmit[formId] = true;
           turnstile.execute(turnstileIds[formId]);
         });
       });
