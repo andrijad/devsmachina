@@ -261,10 +261,8 @@
       border-color: var(--amber-light);
       box-shadow: 0 4px 20px rgba(239,159,39,0.35);
     }
-    #hero-turnstile,
     #waitlist-turnstile {
-      width: 300px;
-      height: 65px;
+      display: none;
     }
     .hero-note {
       margin-top: 1rem;
@@ -1224,6 +1222,7 @@
     const TURNSTILE_SITEKEY = '0x4AAAAAACsW-ibG9m4hyKvk';
     const turnstileIds = {};
     const pendingSubmit = {};
+    const storedToken = {};
 
     async function submitForm(formId, successId, token) {
       const form = document.getElementById(formId);
@@ -1259,11 +1258,14 @@
         pendingSubmit[formId] = false;
         turnstileIds[formId] = turnstile.render(containerId, {
           sitekey: TURNSTILE_SITEKEY,
-          appearance: 'interaction-only',
+          appearance: 'execute',
+          'response-timeout': 60000,
           callback: function(token) {
-            if (!pendingSubmit[formId]) return;
-            pendingSubmit[formId] = false;
-            submitForm(formId, successId, token);
+            storedToken[formId] = token;
+            if (pendingSubmit[formId]) {
+              pendingSubmit[formId] = false;
+              submitForm(formId, successId, token);
+            }
           }
         });
         const form = document.getElementById(formId);
@@ -1273,8 +1275,14 @@
           const btn = form.querySelector('button[type="submit"]');
           btn.textContent = 'Sending...';
           btn.disabled = true;
-          pendingSubmit[formId] = true;
-          turnstile.execute(turnstileIds[formId]);
+          if (storedToken[formId]) {
+            const token = storedToken[formId];
+            storedToken[formId] = null;
+            submitForm(formId, successId, token);
+          } else {
+            pendingSubmit[formId] = true;
+            turnstile.execute(turnstileIds[formId]);
+          }
         });
       });
     };
