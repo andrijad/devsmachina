@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.onload=null;this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" defer></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -286,6 +286,11 @@
       background: var(--amber-light);
       border-color: var(--amber-light);
       box-shadow: 0 4px 20px rgba(239,159,39,0.35);
+    }
+    #hero-turnstile,
+    #waitlist-turnstile {
+      width: 300px;
+      height: 65px;
     }
     .hero-note {
       margin-top: 1rem;
