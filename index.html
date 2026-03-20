@@ -721,6 +721,17 @@
       border-color: var(--paper);
       background: rgba(18,17,42,0.4);
     }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
     .waitlist-form select {
       font-family: var(--display);
       font-size: 1rem;
@@ -1137,7 +1148,8 @@
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="email" placeholder="Work email" required>
           <input type="text" name="store_url" placeholder="Store URL (optional)">
-          <select name="role" required>
+          <label for="role" class="sr-only">Your role</label>
+          <select name="role" id="role" required>
             <option value="" disabled selected>Your role</option>
             <option value="Business Owner">Business Owner</option>
             <option value="Data Analyst">Data Analyst</option>
