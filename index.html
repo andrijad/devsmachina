@@ -235,47 +235,28 @@
       opacity: 0;
       animation: fadeUp 0.7s ease 0.4s forwards;
     }
-    .hero-form {
-      display: flex;
-      gap: 0;
-      max-width: 460px;
+    .hero-cta {
       opacity: 0;
       animation: fadeUp 0.7s ease 0.55s forwards;
     }
-    .hero-form input {
-      flex: 1;
-      font-family: var(--display);
-      font-size: 1rem;
-      padding: 1rem 1.3rem;
-      border: 2px solid rgba(240,238,232,0.2);
-      border-right: none;
-      border-radius: var(--radius) 0 0 var(--radius);
-      background: rgba(240,238,232,0.06);
-      color: var(--paper);
-      outline: none;
-      transition: all 0.25s;
-    }
-    .hero-form input::placeholder { color: rgba(240,238,232,0.6); }
-    .hero-form input:focus {
-      border-color: var(--amber);
-      background: rgba(239,159,39,0.06);
-    }
-    .hero-form button {
+    .hero-cta-btn {
+      display: inline-block;
       font-family: var(--mono);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      padding: 1rem 1.6rem;
+      padding: 1rem 2.8rem;
       background: var(--amber);
       color: var(--ink);
       border: 2px solid var(--amber);
-      border-radius: 0 var(--radius) var(--radius) 0;
+      border-radius: var(--radius);
       cursor: pointer;
       transition: all 0.25s ease;
       white-space: nowrap;
+      text-decoration: none;
     }
-    .hero-form button:hover {
+    .hero-cta-btn:hover {
       background: var(--amber-light);
       border-color: var(--amber-light);
       box-shadow: 0 4px 20px rgba(239,159,39,0.35);
@@ -740,6 +721,31 @@
       border-color: var(--paper);
       background: rgba(18,17,42,0.4);
     }
+    .waitlist-form select {
+      font-family: var(--display);
+      font-size: 1rem;
+      padding: 1rem 1.3rem;
+      background: rgba(18,17,42,0.25);
+      border: 2px solid rgba(240,238,232,0.2);
+      border-radius: var(--radius);
+      color: var(--paper);
+      outline: none;
+      transition: all 0.25s;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(240,238,232,0.65)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1.2rem center;
+      cursor: pointer;
+    }
+    .waitlist-form select option {
+      background: #12112a;
+      color: var(--paper);
+    }
+    .waitlist-form select:focus {
+      border-color: var(--paper);
+      background-color: rgba(18,17,42,0.4);
+    }
+    .waitlist-form select option[value=""] { color: rgba(240,238,232,0.65); }
     .waitlist-form button {
       font-family: var(--mono);
       font-size: 0.85rem;
@@ -1019,14 +1025,10 @@
       <div class="hero-eyebrow">Private Beta — Limited Access</div>
       <h1 class="hero-title">The machine<br>that <em>acts</em><br>on your data.</h1>
       <p class="hero-sub">DevsMachina deploys autonomous AI agents across your ecommerce operations — analyzing pricing, SEO, conversion, and inventory — then delivers precise actions, not reports.</p>
-      <form class="hero-form" id="hero-form" action="https://formspree.io/f/xjgapjby" method="POST">
-        <input type="email" name="email" placeholder="your@email.com" required>
-        <input type="hidden" name="_source" value="hero">
-        <div id="hero-turnstile"></div>
-        <button type="submit">Request Access</button>
-      </form>
+      <div class="hero-cta">
+        <a href="#waitlist" class="hero-cta-btn">Request Access</a>
+      </div>
       <p class="hero-note">No credit card. No spam. Early access only.</p>
-      <div class="success-msg" id="hero-success">✓ You're on the list. We'll be in touch.</div>
     </div>
     <div class="hero-right">
       <div class="diagram">
@@ -1135,6 +1137,16 @@
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="email" placeholder="Work email" required>
           <input type="text" name="store_url" placeholder="Store URL (optional)">
+          <select name="role" required>
+            <option value="" disabled selected>Your role</option>
+            <option value="Business Owner">Business Owner</option>
+            <option value="Data Analyst">Data Analyst</option>
+            <option value="Sales">Sales</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Developer">Developer</option>
+            <option value="Operations">Operations</option>
+            <option value="Other">Other</option>
+          </select>
           <input type="hidden" name="_source" value="waitlist">
           <div id="waitlist-turnstile"></div>
           <button type="submit">Request Early Access</button>
@@ -1217,21 +1229,21 @@
           form.style.display = 'none';
           success.style.display = 'block';
         } else {
-          btn.textContent = formId === 'hero-form' ? 'Request Access' : 'Request Early Access';
+          btn.textContent = 'Request Early Access';
           btn.disabled = false;
           turnstile.reset(turnstileIds[formId]);
         }
       } catch {
-        btn.textContent = formId === 'hero-form' ? 'Request Access' : 'Request Early Access';
+        btn.textContent = 'Request Early Access';
         btn.disabled = false;
         turnstile.reset(turnstileIds[formId]);
       }
     }
 
     window.onTurnstileLoad = function() {
-      ['hero-form', 'waitlist-form'].forEach(function(formId) {
-        const successId = formId === 'hero-form' ? 'hero-success' : 'waitlist-success';
-        const containerId = formId === 'hero-form' ? '#hero-turnstile' : '#waitlist-turnstile';
+      ['waitlist-form'].forEach(function(formId) {
+        const successId = 'waitlist-success';
+        const containerId = '#waitlist-turnstile';
         pendingSubmit[formId] = false;
         turnstileIds[formId] = turnstile.render(containerId, {
           sitekey: TURNSTILE_SITEKEY,
