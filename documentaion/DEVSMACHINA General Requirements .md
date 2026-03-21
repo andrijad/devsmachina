@@ -144,36 +144,37 @@ Ovde opisujem šta i kako aplikacija radi, tačnije kako će korisnici da je kor
 
 Ovo se odnosi na to kako će Ai Agenti dobijati inicijalne podatke.
 
-## 1. Scrapper će analizirati dostupne podatke (drugačije i ne može).
-
-## 2. Auditori i localization coverage alati će biti povezani na sopstveni sajt.
-
-## 3. Inventory - za WP/WOO bi trebalo preko sopstevnog API ili Application Key opcije. (potreban admin). Za ERP/CRM alate - preko API ali vrv ne u MVP. Ovo je tema za razmišljanje u sledećim fazama, a sada samo da se notira.
-
-## 4. GA4 i slični alati - idealno preko OAuth tokena ili što jednostavnije za korisnike. 
+	## 1. Scrapper će analizirati dostupne podatke (drugačije i ne može).
+	
+	## 2. Auditori i localization coverage alati će biti povezani na sopstveni sajt.
+	
+	## 3. Inventory - za WP/WOO bi trebalo preko sopstevnog API ili Application Key opcije. (potreban admin). Za ERP/CRM alate - preko API ali vrv ne u MVP. Ovo je tema za razmišljanje u sledećim fazama, a sada samo da se notira.
+	
+	## 4. GA4 i slični alati - idealno preko OAuth tokena ili što jednostavnije za korisnike. 
 
 
 # REPORTING
 
-## 1. Korisnici mogu da biraju na koji način dobijaju izveštaj. 
-## 2. U MVP reporting može da bude samo email (eventualno signal, telegram, slack poruke).
-## 3. U MVP korisnici mogu mapirati kako će koji report da se šalje (npr Inventory ili pricing da ide inventory ili mkt timu, operations report managementu, CRO/tech SEO web/dev timu, itd)
-## 4. Default opcija je slanje na mail.
-## 5. Automatsko rutiranje na osnovu tipa trigera/eventa/konteksta je feature za budućnost.
-## 6. Opcije predlega reporta u samoj aplikaciji uz opcije za - send, save, export, delete. Za MVP možda samo staviti fokus na slanje, bez opcije za pregled i menadžment u samoj app.
+	## 1. Korisnici mogu da biraju na koji način dobijaju izveštaj. 
+	## 2. U MVP reporting može da bude samo email (eventualno signal, telegram, slack poruke).
+	## 3. U MVP korisnici mogu mapirati kako će koji report da se šalje (npr Inventory ili pricing da ide inventory ili mkt timu, operations report managementu, CRO/tech SEO web/dev timu, itd)
+	## 4. Default opcija je slanje na mail.
+	## 5. Automatsko rutiranje na osnovu tipa trigera/eventa/konteksta je feature za budućnost.
+	## 6. Opcije predlega reporta u samoj aplikaciji uz opcije za - send, save, export, delete. Za MVP možda samo staviti fokus na slanje, bez opcije za pregled i menadžment u samoj app.
 	
 
 # HISTORICAL DATA
-## 1. Historical data: Korisnici mogu da vide prethodne reports/audits koje su imali.
-## 2. Mogu ih preuzeti/eksportovati.
-## 3. Posle MVP mogu se omogućiti dodatne opcije
+	## 1. Historical data: Korisnici mogu da vide prethodne reports/audits koje su imali.
+	## 2. Mogu ih preuzeti/eksportovati.
+	## 3. Posle MVP mogu se omogućiti dodatne opcije
 		
 	
 # OUT OF SCOPE FOR MVP
 
 ## 1. META reports 
 	- opcija da se više izveštaja objedini u jedan i da se actionable insights ili same konkretne akcije definišu na osnovu holističkog pregleda svih informacija.
-- 	Ajzenhauer matrica i ovde primenljiva.
+	- Ajzenhauer matrica i ovde primenljiva.
+	
 ## 2.integracije sa drugim ERPs i CRM za praćenje inventory. 
 	- API calls
 	
