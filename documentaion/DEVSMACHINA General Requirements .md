@@ -155,18 +155,18 @@ Ovo se odnosi na to kako će Ai Agenti dobijati inicijalne podatke.
 
 # REPORTING
 
-    ## 1. Korisnici mogu da biraju na koji način dobijaju izveštaj. 
-    ## 2. U MVP reporting može da bude samo email (eventualno signal, telegram, slack poruke).
-    ## 3. U MVP korisnici mogu mapirati kako će koji report da se šalje (npr Inventory ili pricing da ide inventory ili mkt timu, operations report managementu, CRO/tech SEO web/dev timu, itd)
-    ## 4. Default opcija je slanje na mail.
-    ## 5. Automatsko rutiranje na osnovu tipa trigera/eventa/konteksta je feature za budućnost.
-    ## 6. Opcije predlega reporta u samoj aplikaciji uz opcije za - send, save, export, delete. Za MVP možda samo staviti fokus na slanje, bez opcije za pregled i menadžment u samoj app.
+## 1. Korisnici mogu da biraju na koji način dobijaju izveštaj. 
+## 2. U MVP reporting može da bude samo email (eventualno signal, telegram, slack poruke).
+## 3. U MVP korisnici mogu mapirati kako će koji report da se šalje (npr Inventory ili pricing da ide inventory ili mkt timu, operations report managementu, CRO/tech SEO web/dev timu, itd)
+## 4. Default opcija je slanje na mail.
+## 5. Automatsko rutiranje na osnovu tipa trigera/eventa/konteksta je feature za budućnost.
+## 6. Opcije predlega reporta u samoj aplikaciji uz opcije za - send, save, export, delete. Za MVP možda samo staviti fokus na slanje, bez opcije za pregled i menadžment u samoj app.
 	
 
 # HISTORICAL DATA
-    ## 1. Historical data: Korisnici mogu da vide prethodne reports/audits koje su imali.
-    ## 2. Mogu ih preuzeti/eksportovati.
-    ## 3. Posle MVP mogu se omogućiti dodatne opcije
+## 1. Historical data: Korisnici mogu da vide prethodne reports/audits koje su imali.
+## 2. Mogu ih preuzeti/eksportovati.
+## 3. Posle MVP mogu se omogućiti dodatne opcije
 		
 	
 # OUT OF SCOPE FOR MVP
