@@ -1,0 +1,1 @@
+ovde će ići tekst koji će opisati upotrebu devsmachine u kontekstu DTC managera
