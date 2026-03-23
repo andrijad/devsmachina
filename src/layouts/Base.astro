@@ -28,6 +28,7 @@ const {
   narrow = false,
   navType = 'main',
 } = Astro.props;
+import '../styles/global.css';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +58,6 @@ const {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.onload=null;this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" /></noscript>
   {includeTurnstile && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" defer></script>}
-  <link rel="stylesheet" href="/styles/global.css" />
   <slot name="head" />
   <script src="/cdn-cgi/zaraz/i.js" defer></script>
 </head>
