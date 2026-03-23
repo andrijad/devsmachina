@@ -1,0 +1,287 @@
+---
+import Base from '../layouts/Base.astro';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "DevsMachina",
+    "url": "https://devsmachina.app",
+    "logo": "https://devsmachina.app/favicon.svg",
+    "description": "Deploy specialized AI agents across pricing, SEO, conversion, and inventory. Built for WooCommerce and DTC brands that need action, not reports."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "DevsMachina",
+    "url": "https://devsmachina.app"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DevsMachina",
+    "url": "https://devsmachina.app",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Autonomous AI agents for ecommerce operations — pricing, SEO, conversion, and inventory management for WooCommerce and DTC brands.",
+    "offers": {
+      "@type": "Offer",
+      "description": "Early access with founder pricing for the first cohort of WooCommerce and DTC stores."
+    }
+  }
+];
+---
+
+<Base
+  title="DevsMachina — Autonomous AI Agents for Your Store"
+  description="Deploy specialized AI agents across pricing, SEO, conversion, and inventory. Built for WooCommerce and DTC brands that need action, not reports."
+  canonical="https://devsmachina.app"
+  ogTitle="DevsMachina — Autonomous AI Agents for Your Store"
+  ogDescription="Deploy specialized AI agents across pricing, SEO, conversion, and inventory. Built for WooCommerce and DTC brands that need action, not reports."
+  ogImage="https://devsmachina.app/og-image.webp"
+  ogImageWidth="1200"
+  ogImageHeight="630"
+  includeTurnstile={true}
+  navType="main"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+
+  <main>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Pricing Agent</span>
+      <span class="ticker-item">SEO Monitor</span>
+      <span class="ticker-item">Conversion Audit</span>
+      <span class="ticker-item">Ops Reporting</span>
+      <span class="ticker-item">Inventory Signals</span>
+      <span class="ticker-item">Localization</span>
+      <span class="ticker-item">WooCommerce</span>
+      <span class="ticker-item">GA4 Integration</span>
+      <span class="ticker-item">Pricing Agent</span>
+      <span class="ticker-item">SEO Monitor</span>
+      <span class="ticker-item">Conversion Audit</span>
+      <span class="ticker-item">Ops Reporting</span>
+      <span class="ticker-item">Inventory Signals</span>
+      <span class="ticker-item">Localization</span>
+      <span class="ticker-item">WooCommerce</span>
+      <span class="ticker-item">GA4 Integration</span>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Private Beta — Limited Access</div>
+      <h1 class="hero-title">The machine<br>that <em>acts</em><br>on your data.</h1>
+      <p class="hero-sub">DevsMachina deploys autonomous AI agents across your ecommerce operations — analyzing pricing, SEO, conversion, and inventory — then delivers precise actions, not reports.</p>
+      <div class="hero-cta">
+        <a href="#waitlist" class="hero-cta-btn">Request Access</a>
+      </div>
+      <p class="hero-note">No credit card. No spam. Early access only.</p>
+    </div>
+    <div class="hero-right">
+      <div class="diagram">
+        <div class="diagram-node agent-pricing">
+          <div class="node-dot"></div>
+          <span class="node-label">pricing_agent</span>
+          <span class="node-status">running</span>
+        </div>
+        <div class="diagram-arrow">
+          <div class="diagram-arrow-line"></div>
+          <span class="diagram-label">insight extracted</span>
+          <div class="diagram-arrow-line"></div>
+        </div>
+        <div class="diagram-node agent-seo">
+          <div class="node-dot slow"></div>
+          <span class="node-label">seo_agent</span>
+          <span class="node-status">running</span>
+        </div>
+        <div class="diagram-arrow">
+          <div class="diagram-arrow-line"></div>
+          <span class="diagram-label">insight extracted</span>
+          <div class="diagram-arrow-line"></div>
+        </div>
+        <div class="diagram-node agent-cro">
+          <div class="node-dot slower"></div>
+          <span class="node-label">cro_agent</span>
+          <span class="node-status">running</span>
+        </div>
+        <div class="diagram-arrow">
+          <div class="diagram-arrow-line"></div>
+          <span class="diagram-label">dispatching actions</span>
+          <div class="diagram-arrow-line"></div>
+        </div>
+        <div class="diagram-node">
+          <div class="node-dot inactive"></div>
+          <span class="node-label">inventory_agent</span>
+          <span class="node-status idle">scheduled</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-tag">How it works</div>
+        <h2 class="section-title">Data in. Action out.<br>No manual work in between.</h2>
+        <p class="section-sub">Agents run continuously across your store's data sources and push decisions — not dashboards — to where your team operates.</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><div class="step-num">01 — INGEST</div><div class="step-title">Connect your sources</div><p class="step-desc">WooCommerce, GA4, competitor feeds, ad platforms. DevsMachina ingests from all relevant data sources automatically.</p></div>
+        <div class="step"><div class="step-num">02 — ANALYZE</div><div class="step-title">Agents go to work</div><p class="step-desc">Specialized agents run continuously — each focused on one operational domain. Pricing, SEO, CRO, inventory, localization.</p></div>
+        <div class="step"><div class="step-num">03 — EXTRACT</div><div class="step-title">Insights become actions</div><p class="step-desc">No reports. No charts to interpret. Each agent produces a specific, actionable recommendation with supporting evidence.</p></div>
+        <div class="step"><div class="step-num">04 — DISPATCH</div><div class="step-title">Delivered where it matters</div><p class="step-desc">Actions go to Slack, email, or directly into your systems. The right person gets the right signal at the right time.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="agents">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-tag">The Agents</div>
+        <h2 class="section-title">Six specialists.<br>One platform.</h2>
+        <p class="section-sub">Each agent is purpose-built for a specific operational domain. They run independently and report to a central orchestrator.</p>
+      </div>
+      <div class="agents-grid reveal">
+        <div class="agent-card"><div class="agent-icon">PRICING</div><div class="agent-name">Pricing Intelligence</div><p class="agent-desc">Tracks competitor prices across markets, detects margin opportunities, and flags pricing anomalies before they cost you revenue.</p></div>
+        <div class="agent-card"><div class="agent-icon">SEO</div><div class="agent-name">SEO Monitor</div><p class="agent-desc">Monitors keyword rankings, detects traffic shifts, and surfaces content gaps with specific remediation steps.</p></div>
+        <div class="agent-card"><div class="agent-icon">CRO</div><div class="agent-name">Conversion Audit</div><p class="agent-desc">Analyzes funnel behavior, identifies friction points, and proposes targeted experiments based on real session data.</p></div>
+        <div class="agent-card"><div class="agent-icon">REPORTING</div><div class="agent-name">Operations Report</div><p class="agent-desc">Synthesizes GA4, ad spend, and revenue data into a weekly digest with variance analysis and trend alerts.</p></div>
+        <div class="agent-card"><div class="agent-icon">INVENTORY</div><div class="agent-name">Inventory Signals</div><p class="agent-desc">Detects low stock risks, seasonal demand shifts, and supplier lead time mismatches before they become stockouts.</p></div>
+        <div class="agent-card"><div class="agent-icon">LOCALIZATION</div><div class="agent-name">Localization Coverage</div><p class="agent-desc">Audits multilingual store coverage, flags untranslated content, and tracks localization gaps across target markets.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-tag">Who it's for</div>
+        <h2 class="section-title">Built for operators,<br>not analysts.</h2>
+      </div>
+      <div class="audience reveal">
+        <ul class="audience-list">
+          <li>Mid-market DTC brands running WooCommerce who need operational intelligence without hiring a data team</li>
+          <li>Ecommerce PMs managing multiple channels who are drowning in dashboards but starved for decisions</li>
+          <li>Store owners scaling internationally who need localization and pricing intelligence across markets</li>
+          <li>Growth teams running lean who want the output of a full ops team at a fraction of the cost</li>
+        </ul>
+        <div class="audience-quote">
+          <p>We don't need more data. We need someone — or something — to tell us exactly what to do next.</p>
+          <cite>— The ops problem DevsMachina solves</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="waitlist-section" id="waitlist">
+    <div class="waitlist-inner">
+      <div>
+        <h2 class="waitlist-title">Get early access<br>before we <em>open the gates.</em></h2>
+        <p class="waitlist-sub">We're onboarding a limited number of WooCommerce and DTC stores in the first cohort. Early access includes direct input into the roadmap and founder pricing.</p>
+      </div>
+      <div>
+        <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xjgapjby" method="POST">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Work email" required>
+          <input type="text" name="store_url" placeholder="Store URL (optional)">
+          <label for="role" class="sr-only">Your role</label>
+          <select name="role" id="role" required>
+            <option value="" disabled selected>Your role</option>
+            <option value="Business Owner">Business Owner</option>
+            <option value="Data Analyst">Data Analyst</option>
+            <option value="Sales">Sales</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Developer">Developer</option>
+            <option value="Operations">Operations</option>
+            <option value="Other">Other</option>
+          </select>
+          <input type="hidden" name="_source" value="waitlist">
+          <div id="waitlist-turnstile"></div>
+          <button type="submit">Request Early Access</button>
+        </form>
+        <div class="waitlist-perks">
+          <div class="waitlist-perk">Founder pricing — locked for early cohort</div>
+          <div class="waitlist-perk">Direct access to the founding team</div>
+          <div class="waitlist-perk">Input on agent roadmap and priorities</div>
+        </div>
+        <div class="success-msg" id="waitlist-success">✓ You're on the list. We'll reach out within 48 hours.</div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <Fragment slot="footer-right">
+    <div style="display:flex;gap:1.5rem;align-items:center;">
+      <a href="/privacy" class="footer-link">Privacy Policy</a>
+      <div class="footer-copy">© 2026 DevsMachina. All rights reserved.</div>
+    </div>
+  </Fragment>
+
+  <script is:inline slot="scripts">
+    const TURNSTILE_SITEKEY = '0x4AAAAAACsW-ibG9m4hyKvk';
+    const turnstileIds = {};
+    const storedToken = {};
+
+    async function submitForm(formId, successId, token) {
+      const form = document.getElementById(formId);
+      const success = document.getElementById(successId);
+      const btn = form.querySelector('button[type="submit"]');
+      const data = new FormData(form);
+      data.set('cf-turnstile-response', token);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+        } else {
+          btn.textContent = 'Request Early Access';
+          btn.disabled = false;
+          turnstile.reset(turnstileIds[formId]);
+        }
+      } catch {
+        btn.textContent = 'Request Early Access';
+        btn.disabled = false;
+        turnstile.reset(turnstileIds[formId]);
+      }
+    }
+
+    window.onTurnstileLoad = function() {
+      ['waitlist-form'].forEach(function(formId) {
+        const successId = 'waitlist-success';
+        const containerId = '#waitlist-turnstile';
+        turnstileIds[formId] = turnstile.render(containerId, {
+          sitekey: TURNSTILE_SITEKEY,
+          callback: function(token) {
+            storedToken[formId] = token;
+          },
+          'expired-callback': function() {
+            storedToken[formId] = null;
+          }
+        });
+        const form = document.getElementById(formId);
+        if (!form) return;
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const btn = form.querySelector('button[type="submit"]');
+          btn.textContent = 'Sending...';
+          btn.disabled = true;
+          if (storedToken[formId]) {
+            const token = storedToken[formId];
+            storedToken[formId] = null;
+            submitForm(formId, successId, token);
+          } else {
+            btn.textContent = 'Request Early Access';
+            btn.disabled = false;
+          }
+        });
+      });
+    };
+  </script>
+</Base>

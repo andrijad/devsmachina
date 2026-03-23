@@ -2,7 +2,7 @@
   "name": "devsmachina",
   "compatibility_date": "2026-03-18",
   "assets": {
-    "directory": "./",
-    "exclude": [".git/**", ".wrangler/**"]
+    "directory": "./dist",
+    "exclude": [".git/**", ".wrangler/**", "src/**", "node_modules/**"]
   }
 }
