@@ -857,6 +857,27 @@ nav {
 
 .waitlist-form input::placeholder { color: rgba(240, 238, 232, 0.65); }
 
+.waitlist-form textarea {
+  font-family: var(--display);
+  font-size: 1rem;
+  padding: 1rem 1.3rem;
+  background: rgba(18, 17, 42, 0.25);
+  border: 2px solid rgba(240, 238, 232, 0.2);
+  border-radius: var(--radius);
+  color: var(--paper);
+  outline: none;
+  transition: all 0.25s;
+  resize: vertical;
+  min-height: 5rem;
+}
+
+.waitlist-form textarea::placeholder { color: rgba(240, 238, 232, 0.65); }
+
+.waitlist-form textarea:focus {
+  border-color: var(--paper);
+  background: rgba(18, 17, 42, 0.4);
+}
+
 .waitlist-form input:focus {
   border-color: var(--paper);
   background: rgba(18, 17, 42, 0.4);
