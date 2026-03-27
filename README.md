@@ -7,7 +7,6 @@ Static landing page for [devsmachina.app](https://devsmachina.app).
 - Pure HTML/CSS/JS — no framework, no dependencies
 - Hosted on Cloudflare Pages (via Wrangler / Workers Assets)
 - Forms powered by [Formspree](https://formspree.io) + [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/) for bot protection
-- Analytics via Cloudflare Zaraz (GA4)
 
 ## Structure
 
