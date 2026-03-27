@@ -59,7 +59,6 @@ import '../styles/global.css';
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" /></noscript>
   {includeTurnstile && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" defer></script>}
   <slot name="head" />
-  <script src="/cdn-cgi/zaraz/i.js" defer></script>
 </head>
 <body class:list={[{ 'narrow-layout': narrow }]}>
 
@@ -84,7 +83,7 @@ import '../styles/global.css';
 
   <div class="cookie-banner" id="cookie-banner">
     <div class="cookie-inner">
-      <p class="cookie-text">This site uses cookies for spam prevention (Cloudflare Turnstile), analytics (Google Analytics 4), and loads fonts from Google Fonts. <a href="/privacy">Privacy Policy</a></p>
+      <p class="cookie-text">This site uses cookies for spam prevention (Cloudflare Turnstile) and loads fonts from Google Fonts. <a href="/privacy">Privacy Policy</a></p>
       <div class="cookie-actions">
         <button class="cookie-accept" onclick="acceptCookies()">Got it</button>
         <button class="cookie-decline" onclick="declineCookies()">Decline</button>
