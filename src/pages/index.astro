@@ -183,12 +183,11 @@ const jsonLd = [
       </div>
       <div>
         <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xjgapjby" method="POST">
-          <input type="text" name="name" placeholder="Your name (mandatory)" required>
-          <input type="email" name="email" placeholder="Work email (mandatory)" required>
-          <input type="text" name="store_url" placeholder="Store URL (optional)">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholdfer="Work email" required>
           <label for="role" class="sr-only">Your role</label>
           <select name="role" id="role" required>
-            <option value="" disabled selected>Your role (mandatory)</option>
+            <option value="" disabled selected>Your role</option>
             <option value="Business Owner">Business Owner</option>
             <option value="Data Analyst">Data Analyst</option>
             <option value="Sales">Sales</option>
@@ -197,7 +196,7 @@ const jsonLd = [
             <option value="Operations">Operations</option>
             <option value="Other">Other</option>
           </select>
-          <textarea name="message" placeholder="Your message (optional)" maxlength="250" rows="3"></textarea>
+          <textarea name="message" placeholder="Your message" maxlength="250" rows="3"></textarea>
           <input type="hidden" name="_source" value="waitlist">
           <div id="waitlist-turnstile"></div>
           <button type="submit">Request Early Access</button>
