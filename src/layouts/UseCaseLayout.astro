@@ -83,7 +83,7 @@ const {
     </section>
 
     {(prevUrl || nextUrl) && (
-      <nav class="article-nav" aria-label="Article navigation">
+      <div class="article-nav-wrap">
         <div class="article-nav-inner">
           {prevUrl ? (
             <a href={prevUrl} class="article-nav-link">
@@ -98,7 +98,7 @@ const {
             </a>
           ) : <div />}
         </div>
-      </nav>
+      </div>
     )}
   </main>
 
@@ -288,7 +288,10 @@ const {
     box-shadow: 0 4px 20px rgba(239, 159, 39, 0.3);
   }
 
-  .article-nav { border-top: 1px solid rgba(240, 238, 232, 0.08); }
+  /* ─── ARTICLE NAV — koristimo div umesto nav da izbegnemo global nav stilove ─── */
+  .article-nav-wrap {
+    border-top: 1px solid rgba(240, 238, 232, 0.08);
+  }
   .article-nav-inner {
     max-width: 1200px;
     margin: 0 auto;
