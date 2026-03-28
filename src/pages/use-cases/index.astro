@@ -1,0 +1,662 @@
+---
+// src/pages/use-cases/index.astro
+import Base from '../../layouts/Base.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Use Cases — DevsMachina",
+  "url": "https://devsmachina.app/use-cases",
+  "description": "DevsMachina turns fragmented ecommerce data into a ranked list of actions — so teams stop debating priorities and start executing them."
+};
+---
+
+<Base
+  title="Why Ecommerce Teams Make Bad Decisions With Good Data — DevsMachina"
+  description="Your team has GA4, ad dashboards, inventory feeds, and competitor spreadsheets. And yet nobody can answer 'what should we do this week?' DevsMachina turns fragmented data into a ranked list of actions."
+  canonical="https://devsmachina.app/use-cases"
+  ogTitle="Why Ecommerce Teams Make Bad Decisions With Good Data"
+  ogDescription="Your team has GA4, ad dashboards, inventory feeds, and competitor spreadsheets. DevsMachina turns fragmented data into a ranked list of actions — so teams stop debating priorities and start executing them."
+  ogImage="https://devsmachina.app/og/use-cases-overview.webp"
+  ogImageWidth="1200"
+  ogImageHeight="630"
+  includeTurnstile={false}
+  navType="usecase"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="ov-hero">
+      <div class="ov-hero-left">
+        <div class="ov-hero-tag">Use Cases</div>
+        <h1>Why Ecommerce Teams Make Bad Decisions With Good Data</h1>
+        <p class="ov-hero-sub">Your team has GA4, ad dashboards, inventory feeds, and competitor spreadsheets. And yet nobody can answer "what should we do this week?" DevsMachina turns fragmented data into a ranked list of actions.</p>
+      </div>
+      <div class="ov-hero-img-wrap">
+		<img
+			  src="/images/use-cases/overview-hero.webp"
+			  alt="Ecommerce team decision dashboard"
+			  width="800"
+			  height="600"
+			  loading="eager"
+			  decoding="async"
+			  fetchpriority="high"
+			/>
+      </div>
+    </section>
+
+    <!-- ── PROBLEM — 4 dysfunctions ── -->
+    <section class="ov-problem">
+      <div class="ov-problem-inner">
+        <div class="ov-section-tag">The Problem</div>
+        <h2 class="ov-section-title">The real problem isn't data. It's decision architecture.</h2>
+        <p class="ov-section-sub">Ecommerce teams fail not because they lack information, but because nobody synthesizes it into a decision. Without that layer, a predictable set of dysfunctions takes hold.</p>
+        <div class="ov-dysfunctions">
+          <div class="ov-dysfunction">
+            <div class="ov-dysfunction-num">01 — DIFFUSION</div>
+            <div class="ov-dysfunction-title">Responsibility Diffusion</div>
+            <p>Marketing watches ROAS. Sales watches revenue. The web team watches bounce rate. Nobody owns the insight that connects all three. When nobody owns the synthesis, nobody owns the action.</p>
+          </div>
+          <div class="ov-dysfunction">
+            <div class="ov-dysfunction-num">02 — PARALYSIS</div>
+            <div class="ov-dysfunction-title">Paralysis by Information</div>
+            <p>Organic traffic is up but conversions are down. Ad spend is flat but CPC increased. Five dashboards tell five different stories. You pick the one that confirms what you already planned to do.</p>
+          </div>
+          <div class="ov-dysfunction">
+            <div class="ov-dysfunction-num">03 — INERTIA</div>
+            <div class="ov-dysfunction-title">Sunk Cost Inertia</div>
+            <p>The checkout redesign is on week five. The data isn't promising, but 120 hours of dev time are already spent. It continues — absorbing bandwidth that could fix the three broken meta descriptions costing you 400 organic visits per week.</p>
+          </div>
+          <div class="ov-dysfunction">
+            <div class="ov-dysfunction-num">04 — DRIFT</div>
+            <div class="ov-dysfunction-title">Priority Drift</div>
+            <p>Everything is important. The SEO audit, the CRO experiment, the new product launch, the ad creative refresh. The team commits to all of them. Together, they guarantee nothing gets finished properly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRINCIPLES ── -->
+    <section class="ov-principles">
+      <div class="ov-principles-inner">
+        <div class="ov-section-tag">How DevsMachina Thinks</div>
+        <h2 class="ov-section-title">Three principles baked into every output.</h2>
+        <p class="ov-section-sub">Every DevsMachina report is filtered through a decision logic that cuts noise and surfaces what matters — in the right order.</p>
+        <div class="ov-principles-grid">
+          <div class="ov-principle">
+            <div class="ov-principle-icon">Pareto Filtering</div>
+            <h3>The 20% that solves 80%</h3>
+            <p>Every report identifies the small number of actions that produce the majority of impact. Your top three categories drive 74% of revenue but only one gets ad support? That's line one — not buried in a table on page four.</p>
+          </div>
+          <div class="ov-principle">
+            <div class="ov-principle-icon">Eisenhower Matrix</div>
+            <h3>What to do now vs. what to schedule</h3>
+            <p>Every recommendation is classified: urgent + important (act today), important not urgent (next sprint), urgent not important (delegate), or neither. Your team sees the matrix. Standups take 15 minutes instead of 45.</p>
+          </div>
+          <div class="ov-principle">
+            <div class="ov-principle-icon">Occam's Razor</div>
+            <h3>Simplest fix first</h3>
+            <p>When a revenue dip can be explained by a broken UTM parameter rather than a strategy shift, the report says "fix the UTM." Teams don't need a heatmap study when the issue is a 404 on the checkout page.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── INLINE IMAGE ── -->
+    <div class="ov-inline-img-section">
+      <div class="ov-inline-img">
+  <img
+    src="/images/use-cases/overview-inline.webp"
+    alt="DevsMachina prioritized action list"
+    width="1200"
+    height="514"
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+      <!-- When image is ready, replace the div above with:
+      <div class="ov-inline-img">
+        <img
+          src="/images/use-cases/overview-inline.webp"
+          alt="DevsMachina dashboard showing prioritized action list"
+          width="1200"
+          height="514"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      -->
+    </div>
+
+    <!-- ── AGENTS GRID ── -->
+    <section class="ov-agents">
+      <div class="ov-agents-inner">
+        <div class="ov-section-tag">The Agents</div>
+        <h2 class="ov-section-title">Seven specialists. One platform.</h2>
+        <p class="ov-section-sub">Activate the agents you need. Each one monitors a specific domain and produces structured, actionable intelligence — filtered, prioritized, and routed to the right person.</p>
+        <div class="ov-agents-grid">
+          <a href="/use-cases/operations-report" class="ov-agent-card ov-agent-1">
+            <div class="ov-agent-label">Operations</div>
+            <div class="ov-agent-name">Operations Report</div>
+            <p class="ov-agent-desc">GA4, ad spend, and revenue synthesized into a weekly brief with variance analysis and ranked actions.</p>
+          </a>
+          <a href="/use-cases/seo-monitoring" class="ov-agent-card ov-agent-2">
+            <div class="ov-agent-label">SEO</div>
+            <div class="ov-agent-name">SEO Monitoring</div>
+            <p class="ov-agent-desc">Organic traffic data cross-referenced with technical SEO. A prioritized task list, not an audit report.</p>
+          </a>
+          <a href="/use-cases/cro-monitoring" class="ov-agent-card ov-agent-3">
+            <div class="ov-agent-label">CRO</div>
+            <div class="ov-agent-name">CRO Monitoring</div>
+            <p class="ov-agent-desc">Funnel drop-offs and conversion friction ranked by revenue impact. Fix what matters, test what's uncertain.</p>
+          </a>
+          <a href="/use-cases/pricing-intelligence" class="ov-agent-card ov-agent-4">
+            <div class="ov-agent-label">Pricing</div>
+            <div class="ov-agent-name">Pricing Intelligence</div>
+            <p class="ov-agent-desc">Competitor sites monitored daily. Alerts only when something changes. Silence otherwise.</p>
+          </a>
+          <a href="/use-cases/inventory-signals" class="ov-agent-card ov-agent-5">
+            <div class="ov-agent-label">Inventory</div>
+            <div class="ov-agent-name">Inventory Signals</div>
+            <p class="ov-agent-desc">Stock levels tracked against sell-through velocity. Stockout risk, demand spikes, and overstock — before they become problems.</p>
+          </a>
+          <a href="/use-cases/landing-page-auditor" class="ov-agent-card ov-agent-6">
+            <div class="ov-agent-label">Auditing</div>
+            <div class="ov-agent-name">Landing Page Auditor</div>
+            <p class="ov-agent-desc">Tech SEO, Core Web Vitals, content, and CRO checked on any URL. Specific fixes, not vague suggestions.</p>
+          </a>
+          <a href="/use-cases/localization-coverage" class="ov-agent-card ov-agent-7">
+            <div class="ov-agent-label">Localization</div>
+            <div class="ov-agent-name">Localization Coverage</div>
+            <p class="ov-agent-desc">Multilingual sites audited for missing and fake translations — including content copied from the default language.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PERSONAS ── -->
+    <section class="ov-personas">
+      <div class="ov-personas-inner">
+        <div class="ov-section-tag">How Teams Use It</div>
+        <h2 class="ov-section-title">Different roles. Same result: less debating, more doing.</h2>
+        <div class="ov-personas-list">
+          <div class="ov-persona">
+            <div class="ov-persona-role">Ecommerce Director</div>
+            <p>Activates Operations Report and Pricing Intelligence. <strong>Monday morning, she has a brief</strong> showing this week's revenue drivers, risk areas, and competitive shifts — before anyone opens their mouth in standup. Routes the Operations report to management, Pricing to merchandising.</p>
+          </div>
+          <div class="ov-persona">
+            <div class="ov-persona-role">Marketing Lead</div>
+            <p>Activates SEO and CRO Monitoring. <strong>Instead of maintaining a backlog</strong> of "things we should probably audit someday," he gets a prioritized task list every week. The tasks that will move revenue are at the top. Low-impact tasks aren't listed at all.</p>
+          </div>
+          <div class="ov-persona">
+            <div class="ov-persona-role">Inventory Manager</div>
+            <p>Activates Inventory Signals. <strong>Instead of checking WooCommerce manually</strong>, she gets alerts only when something requires action — a bestseller trending toward stockout, a seasonal product entering its demand window, an overstock tying up capital.</p>
+          </div>
+          <div class="ov-persona">
+            <div class="ov-persona-role">Web Team Lead</div>
+            <p>Uses Landing Page Auditor before every major launch. <strong>Every new page gets a pre-launch audit</strong> that catches technical and content issues before they go live — not three weeks later when someone notices the conversion rate is below baseline.</p>
+          </div>
+          <div class="ov-persona">
+            <div class="ov-persona-role">Content Manager</div>
+            <p>Runs Localization Coverage quarterly. <strong>Gets a precise list</strong> of what's missing, what's fake-translated, and what needs updating — sorted by traffic impact. Hands it to the translation agency as a work order, not a vague brief.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="ov-cta" aria-label="Early access CTA">
+      <div class="ov-cta-title">Your team spends less time figuring out what to work on.<br>More time actually working on it.</div>
+      <p class="ov-cta-sub">DevsMachina is currently in early access. Limited spots for the first cohort.</p>
+      <a href="/#waitlist" class="ov-cta-btn">Request Early Access</a>
+    </section>
+
+  </main>
+
+</Base>
+
+<style>
+  /* ── HERO ── */
+  .ov-hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 3rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .ov-hero-tag {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .ov-hero-tag::before { content: ''; width: 24px; height: 2px; background: var(--amber); }
+  .ov-hero-left h1 {
+    font-family: var(--display);
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    color: var(--paper);
+    margin-bottom: 1.5rem;
+  }
+  .ov-hero-sub {
+    font-size: 1.15rem;
+    color: rgba(240, 238, 232, 0.6);
+    line-height: 1.75;
+  }
+  .ov-hero-img-wrap {
+    width: 100%;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .ov-hero-img-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .ov-hero-img-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--indigo-deep);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(240, 238, 232, 0.08);
+  }
+  .ov-hero-img-placeholder span {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: rgba(240, 238, 232, 0.2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── SHARED SECTION ELEMENTS ── */
+  .ov-section-tag {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .ov-section-tag::before { content: ''; width: 24px; height: 2px; background: var(--amber); }
+  .ov-section-title {
+    font-family: var(--display);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--paper);
+    margin-bottom: 1rem;
+    max-width: 700px;
+  }
+  .ov-section-sub {
+    font-size: 1.1rem;
+    color: rgba(240, 238, 232, 0.6);
+    line-height: 1.7;
+    max-width: 580px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── PROBLEM ── */
+  .ov-problem {
+    background: var(--indigo-deep);
+    padding: 5rem 0;
+  }
+  .ov-problem-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .ov-dysfunctions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(240, 238, 232, 0.06);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .ov-dysfunction {
+    background: var(--ink);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+  }
+  .ov-dysfunction:hover { background: var(--ink-2); }
+  .ov-dysfunction-num {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .ov-dysfunction-title {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+  .ov-dysfunction p {
+    font-size: 0.95rem;
+    color: rgba(240, 238, 232, 0.55);
+    line-height: 1.65;
+  }
+
+  /* ── PRINCIPLES ── */
+  .ov-principles {
+    background: var(--ink);
+    padding: 5rem 0;
+    border-top: 1px solid var(--line-light);
+  }
+  .ov-principles-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .ov-principles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .ov-principle {
+    padding: 2.5rem;
+    background: var(--ink-2);
+    border-radius: var(--radius);
+    border: 1px solid rgba(240, 238, 232, 0.06);
+    transition: border-color 0.3s;
+  }
+  .ov-principle:hover { border-color: var(--amber); }
+  .ov-principle-icon {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .ov-principle-icon::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--amber);
+  }
+  .ov-principle h3 {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .ov-principle p {
+    font-size: 0.95rem;
+    color: rgba(240, 238, 232, 0.55);
+    line-height: 1.65;
+  }
+
+  /* ── INLINE IMAGE ── */
+  .ov-inline-img-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem 5rem;
+  }
+  .ov-inline-img {
+    width: 100%;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .ov-inline-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .ov-inline-img-placeholder {
+    width: 100%;
+    aspect-ratio: 21/9;
+    background: var(--indigo-deep);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(240, 238, 232, 0.06);
+  }
+  .ov-inline-img-placeholder span {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: rgba(240, 238, 232, 0.2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── AGENTS ── */
+  .ov-agents {
+    background: var(--indigo-deep);
+    padding: 5rem 0;
+  }
+  .ov-agents-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .ov-agents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .ov-agent-card {
+    background: var(--ink);
+    border-radius: var(--radius);
+    padding: 2rem;
+    border: 1px solid rgba(240, 238, 232, 0.06);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: all 0.25s;
+    position: relative;
+  }
+  .ov-agent-card::after {
+    content: '→';
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: rgba(240, 238, 232, 0.2);
+    transition: all 0.25s;
+  }
+  .ov-agent-card:hover {
+    background: var(--ink-2);
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(18, 17, 42, 0.5);
+  }
+  .ov-agent-card:hover::after { color: var(--amber); transform: translateX(4px); }
+  .ov-agent-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .ov-agent-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+  .ov-agent-1 .ov-agent-label { color: var(--amber); }
+  .ov-agent-1 .ov-agent-label::before { background: var(--amber); }
+  .ov-agent-2 .ov-agent-label { color: var(--indigo-light); }
+  .ov-agent-2 .ov-agent-label::before { background: var(--indigo-light); }
+  .ov-agent-3 .ov-agent-label { color: var(--amber); }
+  .ov-agent-3 .ov-agent-label::before { background: var(--amber); }
+  .ov-agent-4 .ov-agent-label { color: var(--lavender); }
+  .ov-agent-4 .ov-agent-label::before { background: var(--lavender); }
+  .ov-agent-5 .ov-agent-label { color: var(--indigo-light); }
+  .ov-agent-5 .ov-agent-label::before { background: var(--indigo-light); }
+  .ov-agent-6 .ov-agent-label { color: var(--lavender); }
+  .ov-agent-6 .ov-agent-label::before { background: var(--lavender); }
+  .ov-agent-7 .ov-agent-label { color: var(--amber-light); }
+  .ov-agent-7 .ov-agent-label::before { background: var(--amber-light); }
+  .ov-agent-name {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1.2;
+  }
+  .ov-agent-desc {
+    font-size: 0.92rem;
+    color: rgba(240, 238, 232, 0.5);
+    line-height: 1.6;
+    flex: 1;
+    padding-bottom: 1.5rem;
+  }
+
+  /* ── PERSONAS ── */
+  .ov-personas {
+    background: var(--ink);
+    padding: 5rem 0;
+    border-top: 1px solid var(--line-light);
+  }
+  .ov-personas-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .ov-personas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(240, 238, 232, 0.06);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 3.5rem;
+  }
+  .ov-persona {
+    background: var(--ink-2);
+    padding: 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+    transition: background 0.2s;
+  }
+  .ov-persona:hover { background: var(--ink); }
+  .ov-persona-role {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--amber);
+    padding-top: 0.2rem;
+    line-height: 1.4;
+  }
+  .ov-persona p {
+    font-size: 0.98rem;
+    color: rgba(240, 238, 232, 0.6);
+    line-height: 1.7;
+  }
+  .ov-persona p strong {
+    color: var(--paper);
+    font-weight: 600;
+  }
+
+  /* ── CTA ── */
+  .ov-cta {
+    background: var(--indigo);
+    padding: 5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .ov-cta::before {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -20%;
+    width: 60%;
+    height: 140%;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .ov-cta-title {
+    font-family: var(--display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    color: var(--paper);
+    margin-bottom: 0.75rem;
+    position: relative;
+    line-height: 1.15;
+  }
+  .ov-cta-sub {
+    font-size: 1.1rem;
+    color: rgba(240, 238, 232, 0.6);
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .ov-cta-btn {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    background: var(--amber);
+    color: var(--ink);
+    border: 2px solid var(--amber);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: all 0.25s;
+    position: relative;
+  }
+  .ov-cta-btn:hover {
+    background: var(--amber-light);
+    border-color: var(--amber-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(239, 159, 39, 0.35);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .ov-hero { grid-template-columns: 1fr; gap: 2.5rem; }
+    .ov-dysfunctions { grid-template-columns: 1fr; }
+    .ov-principles-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .ov-agents-grid { grid-template-columns: 1fr 1fr; }
+    .ov-persona { grid-template-columns: 1fr; gap: 0.5rem; }
+  }
+  @media (max-width: 600px) {
+    .ov-hero { padding: 3rem 1.5rem 2rem; }
+    .ov-problem-inner,
+    .ov-principles-inner,
+    .ov-agents-inner,
+    .ov-personas-inner { padding: 0 1.5rem; }
+    .ov-inline-img-section { padding: 0 1.5rem 3rem; }
+    .ov-agents-grid { grid-template-columns: 1fr; }
+    .ov-cta { padding: 4rem 1.5rem; }
+  }
+</style>

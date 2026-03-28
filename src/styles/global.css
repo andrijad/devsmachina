@@ -81,7 +81,7 @@ body {
    NAV
    ===================== */
 
-nav {
+body > nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -1318,4 +1318,90 @@ footer {
   .hero-title { font-size: clamp(2.6rem, 10vw, 3.6rem); }
   body { padding-top: 72px; }
   .page { padding: 7rem 1.5rem 4rem; }
+}
+
+/* ─── NAV DROPDOWN ─── */
+.nav-dropdown { position: relative; }
+
+.nav-dropdown-trigger {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(240, 238, 232, 0.6);
+  cursor: pointer;
+  padding: 0.4rem 0;
+  border: none;
+  background: none;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.nav-dropdown-trigger:hover { color: var(--paper); }
+.nav-dropdown-trigger::after {
+  content: '▾';
+  font-size: 0.6rem;
+  opacity: 0.5;
+  transition: transform 0.2s;
+}
+.nav-dropdown-trigger[aria-expanded="true"]::after { transform: rotate(180deg); }
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: var(--ink-2);
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius);
+  padding: 0.5rem 0;
+  min-width: 260px;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 200;
+}
+.nav-dropdown-trigger[aria-expanded="true"] + .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-dropdown-menu a {
+  display: block;
+  font-family: var(--display);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(240, 238, 232, 0.7);
+  text-decoration: none;
+  padding: 0.6rem 1.25rem;
+  transition: all 0.15s;
+}
+.nav-dropdown-menu a:hover {
+  background: rgba(240, 238, 232, 0.06);
+  color: var(--amber);
+}
+.nav-dropdown-menu a[aria-current="page"] {
+  color: var(--amber);
+  font-weight: 600;
+}
+
+.nav-dropdown-overview {
+  font-weight: 600 !important;
+  color: var(--amber) !important;
+  border-bottom: 1px solid rgba(240, 238, 232, 0.08);
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.75rem !important;
+}
+
+/* ─── CODE INLINE ─── */
+.article-body code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: rgba(240, 238, 232, 0.08);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--indigo-light);
 }

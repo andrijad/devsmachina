@@ -1,0 +1,65 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+---
+
+<UseCaseLayout
+  title="For Merchandising Teams: Know What Changed at Your Competitor's Store This Morning — DevsMachina"
+  description="DevsMachina's Pricing Intelligence agent monitors competitor sites daily for price changes, new products, and promotions — and only alerts you when something requires a response."
+  canonical="https://devsmachina.app/use-cases/pricing-intelligence"
+  ogTitle="For Merchandising Teams: Know What Changed at Your Competitor's Store This Morning"
+  ogDescription="DevsMachina's Pricing Intelligence agent monitors competitor sites daily for price changes, new products, and promotions — and only alerts you when something requires a response."
+  ogImage="https://devsmachina.app/og/pricing-intelligence.webp"
+  heroTag="Use Case — Pricing"
+  heroTitle="For Merchandising Teams: Know What Changed at Your Competitor's Store This Morning"
+  heroSub="DevsMachina's Pricing Intelligence agent monitors competitor sites daily for price changes, new products, and promotions — and only alerts you when something requires a response."
+  heroImage="/images/use-cases/use-case-4-hero.webp"
+  heroImageAlt="Competitor price monitoring dashboard showing price changes and promotional activity"
+  ctaTitle="Ready to know before your competitors move?"
+  ctaSub="Get early access to the Pricing Intelligence agent."
+  prevUrl="/use-cases/cro-monitoring"
+  prevLabel="CRO Monitoring"
+  nextUrl="/use-cases/inventory-signals"
+  nextLabel="Inventory Signals"
+>
+
+  <h2>The Situation</h2>
+  <p>You have three direct competitors. Between them, they carry roughly 600 products that overlap with your catalog. Prices shift. Promotions launch. Products get added or discontinued.</p>
+  <p>How do you currently track this? Most likely: someone on your team checks the top competitors once a week. They screenshot a few key products, paste prices into a spreadsheet, and flag anything that looks different. The coverage is maybe 30 products out of 600. The rest goes unmonitored until a customer asks "why is this cheaper at [competitor]?" or your conversion rate in a category dips for reasons nobody can explain.</p>
+  <p>This isn't negligence. It's a math problem. Manually checking 600 SKUs across 3 competitors is 1,800 data points. Doing that daily is a full-time job that nobody has. So you spot-check and hope you're checking the right spots.</p>
+
+  <h2>Where Manual Tracking Fails</h2>
+  <p><strong>You catch changes late.</strong> A competitor dropped prices on a product line where you compete directly. Their promotion ran for 10 days before your team noticed. During those 10 days, your conversion rate on those products quietly declined, your ad spend on those products quietly wasted budget, and a portion of your customers quietly discovered a cheaper alternative. By the time you respond, the damage is done and some of those customers aren't coming back.</p>
+  <p><strong>You miss structural shifts.</strong> A competitor adding 40 products to a category you both serve is a strategic signal — they're expanding into your territory. A competitor removing a product line is a signal too — there might be a supply issue or a strategic retreat. These patterns are invisible when you're only spot-checking top sellers.</p>
+  <p><strong>Noise drowns signal.</strong> Teams that attempt daily price scraping often get overwhelmed by the volume. Hundreds of data points, most unchanged. The three price changes that actually matter — on your overlap bestsellers — are buried alongside 50 irrelevant adjustments on products you don't carry. Without a filtering layer, the team either stops reading the reports or spends too long parsing them.</p>
+
+  <h2>What the Pricing Intelligence Agent Does</h2>
+  <p>You provide the competitor URLs during onboarding. The agent visits them on a schedule you define — daily, every other day, weekly — and compares the current state against its last recorded snapshot.</p>
+
+  <div class="callout">
+    <p><strong>Silence when nothing changed. A structured alert when something did.</strong> This is the critical design choice — most monitoring tools report everything, every day, regardless of relevance. The Pricing Intelligence agent applies a filter so your team only sees what requires a decision.</p>
+  </div>
+
+  <p><strong>What it tracks:</strong> Product prices (current vs. previous, absolute and percentage change), new products added to the competitor's catalog, products removed or marked as out of stock, active promotions and sitewide discounts, and assortment changes at the category level.</p>
+  <p>Each flagged change is classified by response urgency. A competitor undercutting your top seller by 15% is urgent and important. A competitor adding a niche product to a category where you have 40% market share is important but not urgent. A competitor changing the price on something you don't sell is noise — logged but not reported.</p>
+  <p><strong>On-demand mode:</strong> Need a competitive snapshot before a pricing review? Trigger a one-time scan on any URL. You get a structured product list with prices and promotional info — a clean starting point for analysis, even without historical comparison.</p>
+
+ <div class="inline-img">
+  <img
+    src="/images/use-cases/use-case-inline.webp"
+    alt="..."
+    width="780"
+    height="390"
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+  <h2>The Value Over Time</h2>
+  <p>Every scan gets stored. After a few weeks of monitoring, you start seeing patterns that no manual spot-check would reveal: a competitor's seasonal pricing strategy, their promotion cadence, how aggressively they price new additions, which categories they're investing in.</p>
+  <p>This is competitive intelligence that usually requires a dedicated analyst. DevsMachina builds it passively, one daily scan at a time.</p>
+
+  <h2>The Shift</h2>
+  <p>Before: you find out about a competitor's price change when your conversion rate tells you — days or weeks after the fact.</p>
+  <p>After: you find out the morning it happens. With enough context to decide quickly: respond, ignore, or monitor. Your team reacts to competitive intelligence in hours, not weeks.</p>
+
+</UseCaseLayout>

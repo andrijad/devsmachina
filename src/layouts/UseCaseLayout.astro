@@ -1,0 +1,327 @@
+---
+// src/layouts/UseCaseLayout.astro
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogTitle: string;
+  ogDescription: string;
+  ogImage: string;
+  heroTag: string;
+  heroTitle: string;
+  heroSub: string;
+  heroImage?: string;
+  heroImageAlt?: string;
+  ctaTitle: string;
+  ctaSub: string;
+  prevUrl?: string;
+  prevLabel?: string;
+  nextUrl?: string;
+  nextLabel?: string;
+  jsonLd?: object;
+}
+
+const {
+  title, description, canonical, ogTitle, ogDescription, ogImage,
+  heroTag, heroTitle, heroSub,
+  heroImage, heroImageAlt,
+  ctaTitle, ctaSub,
+  prevUrl, prevLabel, nextUrl, nextLabel,
+  jsonLd
+} = Astro.props;
+---
+
+<Base
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogTitle={ogTitle}
+  ogDescription={ogDescription}
+  ogImage={ogImage}
+  ogImageWidth="1200"
+  ogImageHeight="630"
+  includeTurnstile={false}
+  navType="usecase"
+>
+  {jsonLd && <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />}
+
+  <main>
+    <header class="article-hero">
+      <div class="article-hero-tag">{heroTag}</div>
+      <h1>{heroTitle}</h1>
+      <p class="article-hero-sub">{heroSub}</p>
+    </header>
+
+    <div class="article-hero-img-wrap">
+      {heroImage ? (
+        <img
+          src={heroImage}
+          alt={heroImageAlt || ''}
+          width="1200"
+          height="675"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      ) : (
+        <div class="article-hero-img-placeholder">
+          <span>image coming soon</span>
+        </div>
+      )}
+    </div>
+
+    <article class="article-body">
+      <slot />
+    </article>
+
+    <section aria-label="Early access CTA" class="cta-band">
+      <div class="cta-band-title">{ctaTitle}</div>
+      <p class="cta-band-sub">{ctaSub}</p>
+      <a href="/#waitlist" class="cta-band-btn">Request Early Access</a>
+    </section>
+
+    {(prevUrl || nextUrl) && (
+      <div class="article-nav-wrap">
+        <div class="article-nav-inner">
+          {prevUrl ? (
+            <a href={prevUrl} class="article-nav-link">
+              <span class="article-nav-dir">← Previous</span>
+              <span class="article-nav-label">{prevLabel}</span>
+            </a>
+          ) : <div />}
+          {nextUrl ? (
+            <a href={nextUrl} class="article-nav-link article-nav-next">
+              <span class="article-nav-dir">Next →</span>
+              <span class="article-nav-label">{nextLabel}</span>
+            </a>
+          ) : <div />}
+        </div>
+      </div>
+    )}
+  </main>
+
+</Base>
+
+<style>
+  .article-hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 3rem 0;
+  }
+  .article-hero-tag {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .article-hero-tag::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--amber);
+  }
+  .article-hero h1 {
+    font-family: var(--display);
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    color: var(--paper);
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+  }
+  .article-hero-sub {
+    font-size: 1.2rem;
+    color: rgba(240, 238, 232, 0.6);
+    line-height: 1.7;
+    max-width: 640px;
+    margin-bottom: 3rem;
+  }
+
+  .article-hero-img-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .article-hero-img-wrap img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    object-fit: cover;
+    display: block;
+  }
+  .article-hero-img-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--indigo-deep);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .article-hero-img-placeholder span {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: rgba(240, 238, 232, 0.25);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .article-body {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4rem 2.5rem;
+  }
+  .article-body :global(h2) {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+  .article-body :global(h2:first-child) { margin-top: 0; }
+  .article-body :global(p) {
+    font-size: 1.05rem;
+    color: rgba(240, 238, 232, 0.65);
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+  }
+  .article-body :global(strong) {
+    color: var(--paper);
+    font-weight: 600;
+  }
+  .article-body :global(.callout) {
+    background: var(--indigo-deep);
+    border-left: 3px solid var(--amber);
+    padding: 1.5rem 1.75rem;
+    margin: 2rem 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .article-body :global(.callout p) {
+    margin: 0;
+    color: rgba(240, 238, 232, 0.75);
+    font-size: 1rem;
+  }
+  .article-body :global(.inline-img) {
+    width: 100%;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 2.5rem 0;
+    display: block;
+  }
+  .article-body :global(.inline-img img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .article-body :global(.inline-img-placeholder) {
+    width: 100%;
+    aspect-ratio: 2/1;
+    background: var(--ink-2);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2.5rem 0;
+  }
+  .article-body :global(.inline-img-placeholder span) {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: rgba(240, 238, 232, 0.2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .cta-band {
+    background: var(--indigo-deep);
+    padding: 4rem 3rem;
+    text-align: center;
+  }
+  .cta-band-title {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: var(--paper);
+    margin-bottom: 0.75rem;
+  }
+  .cta-band-sub {
+    font-size: 1.05rem;
+    color: rgba(240, 238, 232, 0.55);
+    margin-bottom: 2rem;
+  }
+  .cta-band-btn {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    background: var(--amber);
+    color: var(--ink);
+    border: 2px solid var(--amber);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .cta-band-btn:hover {
+    background: var(--amber-light);
+    border-color: var(--amber-light);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(239, 159, 39, 0.3);
+  }
+
+  /* ─── ARTICLE NAV — koristimo div umesto nav da izbegnemo global nav stilove ─── */
+  .article-nav-wrap {
+    border-top: 1px solid rgba(240, 238, 232, 0.08);
+  }
+  .article-nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .article-nav-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .article-nav-next { text-align: right; }
+  .article-nav-dir {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: rgba(240, 238, 232, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .article-nav-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(240, 238, 232, 0.7);
+    transition: color 0.2s;
+  }
+  .article-nav-link:hover .article-nav-label { color: var(--amber); }
+
+  @media (max-width: 768px) {
+    .article-hero { padding: 2rem 1.5rem 0; }
+    .article-hero-img-wrap { padding: 0 1.5rem; }
+    .article-body { padding: 2.5rem 1.5rem; }
+    .cta-band { padding: 3rem 1.5rem; }
+    .article-nav-inner { padding: 1.5rem; flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+    .article-nav-next { text-align: left; }
+  }
+</style>

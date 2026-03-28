@@ -1,0 +1,66 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+---
+
+<UseCaseLayout
+  title="For Inventory Teams: Catch the Stockout Before It Costs You — DevsMachina"
+  description="DevsMachina's Inventory Signals agent monitors WooCommerce stock levels against real sell-through velocity — and alerts your team before a bestseller runs dry."
+  canonical="https://devsmachina.app/use-cases/inventory-signals"
+  ogTitle="For Inventory Teams: Catch the Stockout Before It Costs You"
+  ogDescription="DevsMachina's Inventory Signals agent monitors WooCommerce stock levels against real sell-through velocity — and alerts your team before a bestseller runs dry."
+  ogImage="https://devsmachina.app/og/inventory-signals.webp"
+  heroTag="Use Case — Inventory"
+  heroTitle="For Inventory Teams: Catch the Stockout Before It Costs You"
+  heroSub="DevsMachina's Inventory Signals agent monitors WooCommerce stock levels against real sell-through velocity — and alerts your team before a bestseller runs dry."
+  heroImage="/images/use-cases/use-case-5-hero.webp"
+  heroImageAlt="Inventory signals dashboard showing stock velocity and stockout risk alerts"
+  ctaTitle="Ready to stop discovering stockouts too late?"
+  ctaSub="Get early access to the Inventory Signals agent."
+  prevUrl="/use-cases/pricing-intelligence"
+  prevLabel="Pricing Intelligence"
+  nextUrl="/use-cases/landing-page-auditor"
+  nextLabel="Landing Page Auditor"
+>
+
+  <h2>The Situation</h2>
+  <p>A stockout on your fifth-best-selling product is annoying. A stockout on your first is expensive — and the cost goes beyond lost sales.</p>
+  <p>The Google Shopping ad for that product keeps running, burning budget on clicks that can't convert. Your organic ranking for that product page starts softening because engagement drops. The customer who came for that product buys it from a competitor and saves the competitor's site as a bookmark. One inventory gap creates a cascade across marketing, SEO, and customer retention — and none of those teams see the root cause until someone traces the problem back to a warehouse spreadsheet.</p>
+  <p>Most ecommerce teams discover stockouts reactively: a customer complaint, a marketing manager wondering why ROAS cratered on a specific campaign, a warehouse person updating a number in a spreadsheet. By the time the information reaches procurement, the damage window has been open for days.</p>
+
+  <h2>Why the Current Approach Doesn't Scale</h2>
+  <p><strong>Spreadsheets are snapshots.</strong> They tell you what's in stock right now. They don't tell you that Product X is selling 3x faster than its 30-day average this week, meaning your "comfortable" stock of 45 units will be gone in 8 days instead of the expected 25. By the time the spreadsheet turns red, it's too late to reorder within the supplier's lead time.</p>
+  <p><strong>Flat thresholds miss context.</strong> Setting "alert at 10 units" treats every product the same. But your bestseller at 10 units is 3 days of supply. A slow-moving accessory at 10 units is 4 months of supply. One needs urgent action. The other needs a clearance sale. A static threshold can't distinguish between the two.</p>
+  <p><strong>Overstock is invisible cost.</strong> Teams focus on what they might run out of and ignore what they have too much of. Capital tied up in 6 months of supply for a product that sells twice a week is capital you can't spend on reordering the product that sells 20 times a day. Without demand-weighted stock analysis, money sits on the wrong shelf.</p>
+
+  <h2>What the Inventory Signals Agent Does</h2>
+  <p>The agent connects to your WooCommerce store via REST API and monitors stock levels against actual sell-through data. It doesn't just track numbers — it calculates trajectories.</p>
+
+  <div class="callout">
+    <p><strong>The agent runs checks on your schedule and stays silent when nothing needs attention.</strong> Alerts fire only when action is required — not on a fixed schedule that trains your team to ignore them.</p>
+  </div>
+
+  <p><strong>What it monitors:</strong> Stock levels across all products and variants, sell-through velocity (daily rate, weekly trend, and acceleration or deceleration), days-of-supply projections at current run rate, and demand anomalies that deviate from recent patterns.</p>
+  <p><strong>Stockout risk:</strong> A product is projected to hit zero within its reorder lead time. If you don't order today, you'll have a gap. Immediate alert. <strong>Demand spike:</strong> A product is selling at 2–3x its normal rate — could be seasonal, a campaign, or a competitor stockout redirecting customers to you. <strong>Overstock flag:</strong> A product has 90+ days of supply at current velocity. Worth considering a promotion or a procurement adjustment.</p>
+  <p><strong>Prioritization:</strong> Your top-revenue products getting close to stockout escalate immediately. A slow-moving accessory running low gets mentioned in the weekly summary, not treated as a fire drill. Your team's attention goes where the revenue impact is highest.</p>
+
+ <div class="inline-img">
+  <img
+    src="/images/use-cases/use-case-inline.webp"
+    alt="..."
+    width="780"
+    height="390"
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+  <h2>How It Connects to the Rest of the Business</h2>
+  <p>Stock alerts go to procurement. Demand anomaly flags also go to marketing — because if their campaign is driving unexpected demand, they need to know before they scale it further. Overstock reports go to merchandising for promotional planning. Each stakeholder gets the signal that's relevant to their decisions.</p>
+  <p>Every stock check is stored. Over time, the agent builds a demand pattern history that improves its projections — distinguishing genuine demand shifts from random spikes, identifying seasonal patterns, and refining days-of-supply estimates.</p>
+
+  <h2>The Shift</h2>
+  <p>Before: inventory management is reactive surveillance. Someone checks a spreadsheet, notices a problem, escalates it, and procurement acts — days after the ideal reorder point passed.</p>
+  <p>After: the surveillance is automated. Your team only gets involved when there's a decision to make — and the decision comes with enough context (current stock, velocity, trend, lead time, revenue impact) to make it quickly and correctly.</p>
+  <p>Less time monitoring. More time deciding.</p>
+
+</UseCaseLayout>
