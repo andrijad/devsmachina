@@ -1388,3 +1388,12 @@ footer {
   font-weight: 600;
 }
 
+/* ─── CODE INLINE ─── */
+.article-body code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: rgba(240, 238, 232, 0.08);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--indigo-light);
+}
