@@ -81,7 +81,7 @@ body {
    NAV
    ===================== */
 
-nav {
+body > nav {
   position: fixed;
   top: 0;
   left: 0;
