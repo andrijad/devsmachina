@@ -10,8 +10,8 @@ interface Props {
   ogImageWidth?: string;
   ogImageHeight?: string;
   includeTurnstile?: boolean;
-  narrow?: boolean;
-  navType?: 'main' | 'privacy';
+  narrow?: boolean;  
+  navType?: 'main' | 'privacy' | 'usecase';
 }
 
 const {
@@ -66,12 +66,52 @@ import '../styles/global.css';
 <body class:list={[{ 'narrow-layout': narrow }]}>
 
   <nav>
-    <div class="nav-inner">
-      <a href={navType === 'privacy' ? '/' : '#'} class="nav-logo">devs<span>machina</span>.app</a>
-      {navType === 'main' && <a href="#waitlist" class="nav-cta">Join Waitlist</a>}
-      {navType === 'privacy' && <a href="/" class="nav-back">← Back</a>}
-    </div>
-  </nav>
+  <div class="nav-inner">
+    <a href={navType === 'privacy' ? '/' : '/'} class="nav-logo">devs<span>machina</span>.app</a>
+
+    {navType === 'main' && (
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            Use Cases
+          </button>
+          <ul class="nav-dropdown-menu" role="menu">
+            <li><a href="/use-cases/operations-report" role="menuitem">Operations Report</a></li>
+            <li><a href="/use-cases/seo-monitoring" role="menuitem">SEO Monitoring</a></li>
+            <li><a href="/use-cases/cro-monitoring" role="menuitem">CRO Monitoring</a></li>
+            <li><a href="/use-cases/pricing-intelligence" role="menuitem">Pricing Intelligence</a></li>
+            <li><a href="/use-cases/inventory-signals" role="menuitem">Inventory Signals</a></li>
+            <li><a href="/use-cases/landing-page-auditor" role="menuitem">Landing Page Auditor</a></li>
+            <li><a href="/use-cases/localization-coverage" role="menuitem">Localization Coverage</a></li>
+          </ul>
+        </div>
+        <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+      </div>
+    )}
+
+    {navType === 'usecase' && (
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            Use Cases
+          </button>
+          <ul class="nav-dropdown-menu" role="menu">
+            <li><a href="/use-cases/operations-report" role="menuitem">Operations Report</a></li>
+            <li><a href="/use-cases/seo-monitoring" role="menuitem">SEO Monitoring</a></li>
+            <li><a href="/use-cases/cro-monitoring" role="menuitem">CRO Monitoring</a></li>
+            <li><a href="/use-cases/pricing-intelligence" role="menuitem">Pricing Intelligence</a></li>
+            <li><a href="/use-cases/inventory-signals" role="menuitem">Inventory Signals</a></li>
+            <li><a href="/use-cases/landing-page-auditor" role="menuitem">Landing Page Auditor</a></li>
+            <li><a href="/use-cases/localization-coverage" role="menuitem">Localization Coverage</a></li>
+          </ul>
+        </div>
+        <a href="/#waitlist" class="nav-cta">Request Access</a>
+      </div>
+    )}
+
+    {navType === 'privacy' && <a href="/" class="nav-back">← Back</a>}
+  </div>
+</nav>
 
   <slot />
 
