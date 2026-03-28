@@ -1,0 +1,56 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+---
+
+<UseCaseLayout
+  title="For SEO Teams: Stop Auditing Everything. Fix What Matters. — DevsMachina"
+  description="DevsMachina's SEO Monitoring agent analyzes your organic traffic data and delivers a ranked list of fixes — so your team works on the 20% of SEO issues that drive 80% of results."
+  canonical="https://devsmachina.app/use-cases/seo-monitoring"
+  ogTitle="For SEO Teams: Stop Auditing Everything. Fix What Matters."
+  ogDescription="DevsMachina's SEO Monitoring agent analyzes your organic traffic data and delivers a ranked list of fixes — so your team works on the 20% of SEO issues that drive 80% of results."
+  ogImage="https://devsmachina.app/og/seo-monitoring.webp"
+  heroTag="Use Case — SEO"
+  heroTitle="For SEO Teams: Stop Auditing Everything. Fix What Matters."
+  heroSub="DevsMachina's SEO Monitoring agent analyzes your organic traffic data and delivers a ranked list of fixes — so your team works on the 20% of SEO issues that drive 80% of results."
+  heroImage="/images/use-cases/use-case-2-hero.webp"
+  heroImageAlt="SEO monitoring dashboard showing prioritized fixes ranked by traffic impact"
+  ctaTitle="Ready to fix what actually matters?"
+  ctaSub="Get early access to the SEO Monitoring agent."
+  prevUrl="/use-cases/operations-report"
+  prevLabel="Operations Report"
+  nextUrl="/use-cases/cro-monitoring"
+  nextLabel="CRO Monitoring"
+>
+
+  <h2>The Situation</h2>
+  <p>Your ecommerce site has 800 pages. Your last SEO audit flagged 147 issues: missing meta descriptions, thin content warnings, broken canonical tags, duplicate title tags, slow pages, unoptimized images, crawl errors, orphaned pages, and a dozen redirect chains.</p>
+  <p>That audit is three months old. Since then you've added 40 product pages, restructured two categories, and migrated your blog to a new URL pattern. Half the original audit items are probably resolved. A new set of issues has almost certainly appeared. And nobody has time to run another full audit because the team is busy executing on the first one — starting from the top of the list and working down, regardless of which issues actually affect revenue.</p>
+  <p>This is the SEO hamster wheel. You audit, you get an overwhelming list, you work through it sequentially, and by the time you finish, the site has changed enough that the list is stale. The work feels productive but the traffic graph doesn't move because you spent three weeks fixing alt text on archive pages instead of addressing the canonical tag issue on your top-five revenue pages.</p>
+
+  <h2>The Pattern That Keeps Repeating</h2>
+  <p><strong>Flat priority = wrong priority.</strong> Most audit tools flag issues by type, not by impact. "47 pages missing meta descriptions" looks alarming until you realize 43 of them are tag archive pages with 0 organic traffic. The four that matter — your high-traffic category pages — are buried in the same bucket. Without revenue-weighted prioritization, your team treats a blog post from 2022 the same as your homepage.</p>
+  <p><strong>SEO backlog as parking lot.</strong> Issues get added to a backlog faster than they get resolved. The backlog grows. It becomes psychologically overwhelming. The team cherry-picks easy wins ("let's fix these 20 alt texts") because completing something feels better than starting the hard task that actually matters ("audit and rebuild our internal linking structure for the top 3 categories").</p>
+  <p><strong>No connection between SEO and revenue.</strong> Your SEO tool tells you a page has issues. Your analytics tool tells you what drives revenue. Nobody connects the two. The page ranking #11 for a keyword with 8,000 monthly searches — the one where a title tag update and two internal links could push it to page one — doesn't get flagged because the SEO tool doesn't know it's your second-highest-margin category.</p>
+
+  <h2>What the SEO Monitoring Agent Does</h2>
+  <p>The agent connects to GA4 (and optionally Google Search Console) and cross-references your organic traffic data with technical and content SEO analysis. The output isn't an audit report. It's a task list.</p>
+
+  <div class="callout">
+    <p><strong>What it checks:</strong> Meta data quality on pages that actually receive organic traffic, canonical tag correctness, indexation status, crawl budget efficiency, content thin spots on high-potential pages, and internal linking gaps between related high-traffic pages.</p>
+  </div>
+
+  <p>The agent identifies which issues affect your highest-value pages. A broken canonical on a page generating €500/day in organic revenue is classified as urgent and important. A missing meta description on a policy page with 4 visits per month is classified as neither — and doesn't appear in the report at all.</p>
+  <p>Each action item includes the specific page, the specific problem, and the specific fix. Not "improve meta descriptions" but "Page <code>/category/running-shoes</code> has a duplicate title tag matching <code>/category/athletic-shoes</code>. Update to '[recommended title]' to differentiate targeting."</p>
+  <p>The agent applies established SEO best practices — not opinions, not trends, but the proven directives that reliably improve organic visibility. Combined with your actual traffic data, this means every recommendation is both technically sound and commercially relevant.</p>
+  <p><strong>Scheduling:</strong> Run it weekly or monthly. Each report shows what's new or changed since the last one, so your team works on the delta — not re-auditing the entire site every cycle.</p>
+
+  <div class="inline-img-placeholder">
+    <span>img — SEO task list ranked by revenue impact</span>
+  </div>
+
+  <h2>The Shift</h2>
+  <p>Before: your SEO workflow is audit → overwhelming list → sequential execution → stale data → re-audit. A cycle that produces effort but not proportional results.</p>
+  <p>After: your SEO workflow is automated monitoring → filtered priorities → targeted execution → measurable impact. The agent does the audit continuously. Your team does only the fixing — and only the fixing that matters.</p>
+  <p>The principle is Pareto applied to SEO: the 20% of issues on the 20% of pages that drive 80% of your organic revenue. Fix those first. The rest can wait — or might not need fixing at all.</p>
+
+</UseCaseLayout>
