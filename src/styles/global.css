@@ -1388,6 +1388,14 @@ footer {
   font-weight: 600;
 }
 
+.nav-dropdown-overview {
+  font-weight: 600 !important;
+  color: var(--amber) !important;
+  border-bottom: 1px solid rgba(240, 238, 232, 0.08);
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.75rem !important;
+}
+
 /* ─── CODE INLINE ─── */
 .article-body code {
   font-family: var(--mono);
