@@ -134,7 +134,7 @@ import '../styles/global.css';
     </div>
   </div>
 
-  <script is:inline>
+ <script is:inline>
     (function() {
       if (!localStorage.getItem('cookie_consent')) {
         document.getElementById('cookie-banner').classList.add('visible');
@@ -160,6 +160,28 @@ import '../styles/global.css';
       });
     }, { threshold: 0.1 });
     reveals.forEach(function(el) { observer.observe(el); });
+    // Nav dropdown
+    (function() {
+      var triggers = document.querySelectorAll('.nav-dropdown-trigger');
+      triggers.forEach(function(trigger) {
+        var menu = trigger.nextElementSibling;
+        if (!menu) return;
+        trigger.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var open = trigger.getAttribute('aria-expanded') === 'true';
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+          trigger.setAttribute('aria-expanded', String(!open));
+        });
+      });
+      document.addEventListener('click', function() {
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
   </script>
 
   <slot name="scripts" />
