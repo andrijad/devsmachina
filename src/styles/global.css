@@ -150,21 +150,6 @@ body > nav {
   box-shadow: 0 4px 20px rgba(239, 159, 39, 0.3);
 }
 
-.nav-back {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.nav-back:hover {
-  color: var(--amber);
-}
-
 /* =====================
    TICKER
    ===================== */
