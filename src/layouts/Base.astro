@@ -11,7 +11,7 @@ interface Props {
   ogImageHeight?: string;
   includeTurnstile?: boolean;
   narrow?: boolean;  
-  navType?: 'main' | 'privacy' | 'usecase';
+  navType?: 'main' | 'privacy';
 }
 
 const {
@@ -69,28 +69,7 @@ import '../styles/global.css';
   <div class="nav-inner">
     <a href={navType === 'privacy' ? '/' : '/'} class="nav-logo">devs<span>machina</span>.app</a>
 
-    {navType === 'main' && (
-      <div class="nav-actions">
-        <div class="nav-dropdown">
-          <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
-            Use Cases
-          </button>
-          <ul class="nav-dropdown-menu" role="menu">
-		    <li><a href="/use-cases" role="menuitem" class="nav-dropdown-overview">All Use Cases</a></li>
-            <li><a href="/use-cases/operations-report" role="menuitem">Operations Report</a></li>
-            <li><a href="/use-cases/seo-monitoring" role="menuitem">SEO Monitoring</a></li>
-            <li><a href="/use-cases/cro-monitoring" role="menuitem">CRO Monitoring</a></li>
-            <li><a href="/use-cases/pricing-intelligence" role="menuitem">Pricing Intelligence</a></li>
-            <li><a href="/use-cases/inventory-signals" role="menuitem">Inventory Signals</a></li>
-            <li><a href="/use-cases/landing-page-auditor" role="menuitem">Landing Page Auditor</a></li>
-            <li><a href="/use-cases/localization-coverage" role="menuitem">Localization Coverage</a></li>
-          </ul>
-        </div>
-        <a href="#waitlist" class="nav-cta">Join</a>
-      </div>
-    )}
-
-    {navType === 'usecase' && (
+    {navType !== 'privacy' && (
       <div class="nav-actions">
         <div class="nav-dropdown">
           <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
@@ -98,7 +77,7 @@ import '../styles/global.css';
           </button>
           <ul class="nav-dropdown-menu" role="menu">
             <li><a href="/use-cases" role="menuitem" class="nav-dropdown-overview">All Use Cases</a></li>
-			<li><a href="/use-cases/operations-report" role="menuitem">Operations Report</a></li>
+            <li><a href="/use-cases/operations-report" role="menuitem">Operations Report</a></li>
             <li><a href="/use-cases/seo-monitoring" role="menuitem">SEO Monitoring</a></li>
             <li><a href="/use-cases/cro-monitoring" role="menuitem">CRO Monitoring</a></li>
             <li><a href="/use-cases/pricing-intelligence" role="menuitem">Pricing Intelligence</a></li>
@@ -110,8 +89,6 @@ import '../styles/global.css';
         <a href="/#waitlist" class="nav-cta">Join</a>
       </div>
     )}
-
-    {navType === 'privacy' && <a href="/" class="nav-back">← Back</a>}
   </div>
 </nav>
 
