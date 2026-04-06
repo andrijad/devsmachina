@@ -57,7 +57,11 @@ import '../styles/global.css';
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" /></noscript>
   {includeTurnstile && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" defer></script>}
   <script is:inline>
-    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("consent","default",{analytics_storage:"denied",ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied"});function initGA4(){if(window.ga4Initialized)return;const e=document.createElement("script");e.async=!0;e.src="https://www.googletagmanager.com/gtag/js?id=G-710H8EVH08";document.head.appendChild(e);gtag("js",new Date);gtag("config","G-710H8EVH08",{anonymize_ip:!0});window.ga4Initialized=!0}if(localStorage.getItem("cookie_consent")==="accepted"){"complete"===document.readyState?setTimeout(initGA4,2000):window.addEventListener("load",()=>setTimeout(initGA4,2000));}
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+    gtag("consent","default",{analytics_storage:"denied",ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",wait_for_update:500});
+    const _gas=document.createElement("script");_gas.async=true;_gas.src="https://www.googletagmanager.com/gtag/js?id=G-710H8EVH08";document.head.appendChild(_gas);
+    gtag("js",new Date());gtag("config","G-710H8EVH08");
+    if(localStorage.getItem("cookie_consent")==="accepted"){gtag("consent","update",{analytics_storage:"granted",ad_user_data:"granted",ad_personalization:"granted",ad_storage:"granted"});}
   </script>
   <slot name="head" />
 </head>
@@ -124,7 +128,6 @@ import '../styles/global.css';
       localStorage.setItem('cookie_consent', 'accepted');
       document.getElementById('cookie-banner').classList.remove('visible');
       gtag("consent","update",{analytics_storage:"granted",ad_user_data:"granted",ad_personalization:"granted",ad_storage:"granted"});
-      initGA4();
     }
     function declineCookies() {
       localStorage.setItem('cookie_consent', 'declined');
